@@ -1,0 +1,13 @@
+{
+  "name": "@element-plus-lab/commitlint-config",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "exports": "./index.mjs",
+  "main": "index.mjs",
+  "dependencies": {
+    "@changesets/changelog-github": "catalog:lint-format",
+    "@commitlint/cli": "catalog:lint-format",
+    "@commitlint/config-conventional": "catalog:lint-format"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@element-plus-lab/tsconfig",
+  "version": "1.0.0",
+  "files": [
+    "app.json",
+    "node.json"
+  ],
+  "devDependencies": {
+    "@vue/tsconfig": "catalog:vue",
+    "vite": "catalog:vite"
+  }
+}

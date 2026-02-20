@@ -1,0 +1,6 @@
+pre-commit:
+  jobs:
+    - run: pnpm exec lint-staged
+commit-msg:
+  jobs:
+    - run: npx --no-install commitlint --edit "$1"

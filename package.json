@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "commit": "czg",
+    "lint": "oxlint && eslint",
+    "eslint": "eslint",
+    "lint:fix": "oxlint && eslint --fix",
+    "changeset": "changeset",
+    "version": "changeset version",
+    "version:snapshot": "changeset version --snapshot"
+  },
+  "devDependencies": {
+    "@changesets/cli": "catalog:cli",
+    "@commitlint/cli": "catalog:lint-format",
+    "@element-plus-lab/commitlint-config": "workspace:*",
+    "@element-plus-lab/eslint-config": "workspace:*",
+    "czg": "catalog:lint-format",
+    "eslint": "catalog:lint-format",
+    "fast-glob": "catalog:cli",
+    "lefthook": "catalog:cli",
+    "lint-staged": "catalog:lint-format",
+    "oxlint": "catalog:lint-format"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@element-plus-lab/eslint-config",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "exports": "./index.mjs",
+  "main": "index.mjs",
+  "dependencies": {
+    "@antfu/eslint-config": "catalog:lint-format",
+    "@vue-vine/eslint-config": "catalog:lint-format",
+    "eslint": "catalog:lint-format",
+    "eslint-plugin-oxlint": "catalog:lint-format",
+    "globals": "catalog:lint-format",
+    "oxlint": "catalog:lint-format"
+  }
+}
