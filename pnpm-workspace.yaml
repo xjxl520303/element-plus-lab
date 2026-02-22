@@ -1,6 +1,8 @@
 shellEmulator: true
 
 trustPolicy: no-downgrade
+trustPolicyExclude:
+  - semver@6.3.1
 
 packages:
   # 放置 admin, micro-base, micro-admn
@@ -23,9 +25,10 @@ catalogs:
   # 工程化 / CLI：版本发布、Git 钩子、TypeScript、脚本常用
   cli:
     '@changesets/cli': ^2.29.8
+    '@types/node': ^24.10.1
     fast-glob: ^3.3.3
     lefthook: ^2.0.16
-    # typescript: ^5.9.3
+    typescript: ~5.9.3
 
   # 代码质量：Lint、格式化、Commit 规范、Changelog
   lint-format:
@@ -41,17 +44,6 @@ catalogs:
     lint-staged: ^16.2.7
     oxlint: 1.43.0
 
-    # vue: ^3.5.27
-    # vue-vine: ^1.7.27
-
-  # 构建：Vite、打包与产物
-  vite:
-    # tsdown: ^0.18.1
-    vite: ^7.3.0
-
-  # Vue 生态：运行时与工具链
-  vue:
-    '@vue/tsconfig': ^0.8.1
   # 通用工具库
   # utils:
   # '@antfu/utils': ^9.3.0
@@ -71,11 +63,25 @@ catalogs:
   #   vitest: ^3.0.0
 
   # 样式 / CSS 工具链：Tailwind、PostCSS 等
-  # style:
-  #   autoprefixer: ^10.4.20
-  #   postcss: ^8.5.6
-  #   tailwindcss: ^4.0.0
+  style:
+    # autoprefixer: ^10.4.24
+    # postcss: ^8.5.6
+    tailwindcss: ^4.2.0
 
+  # 构建：Vite、打包与产物
+  vite:
+    '@tailwindcss/vite': ^4.2.0
+    '@vitejs/plugin-vue': ^6.0.2
+    '@vitejs/plugin-vue-jsx': ^5.1.4
+    # 由于当前 vue-vine 不支持 vite@8.0.x 所以暂时使用 7.x 的版本
+    vite: ^7.3.0
+  # Vue 生态：运行时与工具链
+  vue:
+    '@vue/tsconfig': ^0.8.1
+    vue: ^3.5.25
+    # vue-tsc: ^3.1.8
+    vue-vine: ^1.7.27
+    vue-vine-tsc: ^1.7.27
 # 允许运行构建脚本的依赖
 onlyBuiltDependencies:
   - lefthook

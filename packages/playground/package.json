@@ -1,0 +1,26 @@
+{
+  "name": "@element-plus-lab/playground",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-vine-tsc -b && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "vue": "catalog:vue"
+  },
+  "devDependencies": {
+    "@element-plus-lab/tsconfig": "workspace:*",
+    "@tailwindcss/vite": "catalog:vite",
+    "@types/node": "catalog:cli",
+    "@vitejs/plugin-vue": "catalog:vite",
+    "@vitejs/plugin-vue-jsx": "catalog:vite",
+    "tailwindcss": "catalog:style",
+    "typescript": "catalog:cli",
+    "vite": "catalog:vite",
+    "vue-vine": "catalog:vue",
+    "vue-vine-tsc": "catalog:vue"
+  }
+}
