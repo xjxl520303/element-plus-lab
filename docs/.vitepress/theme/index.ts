@@ -7,6 +7,7 @@ import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
 import ElementPlus from 'element-plus';
 import * as ElementPlusIconsVue from '@element-plus/icons-vue';
 import PortalVue from 'portal-vue';
+import { defineComponent, h } from 'vue';
 
 import '@vitepress-demo-preview/component/dist/style.css';
 import '@nolebase/vitepress-plugin-git-changelog/client/style.css';
@@ -35,7 +36,20 @@ export default {
 
     app.use(ElementPlus);
     app.use(PortalVue);
-    app.component('DemoPreview', ElementPlusContainer);
+    // 在 SSR 阶段：注册一个空壳 DemoPreview 组件（不执行真实预览逻辑）
+    // 在客户端阶段：注册真实 ElementPlusContainer
+    const isSSR = typeof window === 'undefined';
+    if (isSSR) {
+      app.component(
+        'DemoPreview',
+        defineComponent({
+          name: 'DemoPreviewNoop',
+          setup: () => () => h('div'),
+        })
+      );
+    } else {
+      app.component('DemoPreview', ElementPlusContainer);
+    }
     app.use(NolebaseGitChangelogPlugin);
     app.use(NolebaseEnhancedReadabilitiesPlugin);
     app.use(TwoslashFloatingVue);

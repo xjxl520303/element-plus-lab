@@ -2,18 +2,22 @@
   "extends": "@element-plus-lab/tsconfig/app.json",
   "compilerOptions": {
     "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
     "paths": {
       "@/*": ["./examples/*"]
     },
     "types": ["vite/client", "vue-vine/macros"]
   },
   "include": [
+    "**/*.d.ts",
     "examples/**/*.ts",
     "examples/**/*.tsx",
     "examples/**/*.vue",
     "examples/**/*.vine.ts",
     ".vitepress/**/*.ts",
     ".vitepress/**/*.mts",
-    ".vitepress/**/*.vue"
+    ".vitepress/**/*.vue",
+    ".vitepress/**/*.d.ts"
   ]
 }

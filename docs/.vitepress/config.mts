@@ -1,5 +1,5 @@
 import { withSidebar } from 'vitepress-sidebar';
-import { defineConfig, UserConfig } from 'vitepress';
+import { defineConfig, type UserConfig } from 'vitepress';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { componentPreview, containerPreview } from '@vitepress-demo-preview/plugin';
@@ -115,6 +115,56 @@ const vitePressOptions: UserConfig = {
         '@nolebase/ui',
       ],
     },
+    ssr: {
+      noExternal: [
+        '@nolebase/vitepress-plugin-enhanced-readabilities',
+        '@nolebase/ui',
+      ],
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (!id.includes('node_modules')) return;
+
+            const moduleId = id.replace(/\\/g, '/');
+
+            // 1) Vue 全家桶
+            if (/node_modules\/(vue|@vue\/|vue-router|vue-vine|@vue-vine\/)/.test(moduleId)) {
+              return 'vue';
+            }
+
+            // 2) Element Plus 生态
+            if (
+              /node_modules\/(element-plus|@element-plus\/|@ctrl\/tinycolor|@floating-ui\/|@popperjs\/core|async-validator|dayjs|lodash-unified|memoize-one|normalize-wheel-es)\//.test(
+                moduleId
+              )
+            ) {
+              return 'element-plus';
+            }
+
+            // 3) Portal
+            if (/node_modules\/portal-vue\//.test(moduleId)) {
+              return 'portal';
+            }
+
+            // 4) VueUse 生态
+            if (/node_modules\/(@vueuse\/|vue-demi)/.test(moduleId)) {
+              return 'vue-use';
+            }
+
+            // 5) 文档插件生态统一 vendor（其余依赖交给 Rollup 自动分配，避免循环 chunk）
+            if (
+              /node_modules\/(@nolebase\/|@vitepress-demo-preview\/|vitepress-sidebar|@shikijs\/|shiki|vitepress\/|floating-vue\/|markdown-it|markdown-it-container)\//.test(
+                moduleId
+              )
+            ) {
+              return 'vendor';
+            }
+          },
+        },
+      }
+    }
   },
 }
 

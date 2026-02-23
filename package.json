@@ -9,7 +9,9 @@
     "changeset": "changeset",
     "version": "changeset version",
     "version:snapshot": "changeset version --snapshot",
-    "docs:dev": "pnpm -F @element-plus-lab/docs run dev"
+    "docs:dev": "pnpm -F @element-plus-lab/docs run dev",
+    "docs:build": "pnpm -F @element-plus-lab/docs run build",
+    "docs:preview": "pnpm -F @element-plus-lab/docs run preview"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:cli",
