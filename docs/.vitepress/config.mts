@@ -61,7 +61,7 @@ const vitePressOptions: UserConfig = {
     socialLinks: [
       {
         icon: 'github',
-        link: 'https://github.com/xjxl520303/vben-business-components',
+        link: 'https://github.com/xjxl520303/element-plus-lab',
       },
       // {
       //   icon: 'zhihu',
