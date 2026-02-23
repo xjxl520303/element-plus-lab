@@ -19,10 +19,8 @@ const alias = {
 const vitePressOptions: UserConfig = {
   title: 'Element Plus Lab',
   description: '基于 Element Plus 的业务组件封装示例和演示项目',
-  base: '/element-plus-lab/',
   srcDir: 'content',
   metaChunk: true,
-  cleanUrls: true,
   lang: 'zh-Hans',
   head: [['link', { rel: 'icon', href: 'https://avatars.githubusercontent.com/u/53321551?v=4' }]],
   themeConfig: {
