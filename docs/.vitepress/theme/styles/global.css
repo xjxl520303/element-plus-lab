@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+/* @source 是 Tailwind v4 的扫描源声明：告诉 Tailwind 去哪些文件里提取类名 */
+@source "../../../content/**/*.{md,vue,ts,js}";
+/* demo/components used by preview plugin */
+@source "../../../examples/**/*.{vue,ts,js}";
+/* vitepress theme files */
+@source "../**/*.{vue,ts,js}";

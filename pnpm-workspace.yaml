@@ -1,36 +1,37 @@
 shellEmulator: true
 
 trustPolicy: no-downgrade
+
 trustPolicyExclude:
   - semver@6.3.1
-
+  - semver@5.7.2
+  - make-dir@2.1.0
+  - less@4.5.1
 packages:
-  # 放置 admin, micro-base, micro-admn
-  # 这些功能待实现
   - apps/*
-  # 放置 vitepress 文档
   - docs
-  # 各种配置文件，包括：Vite, TailwindCSS, TypeScript
   - internal/*
-  # 各种校验工具配置，包括：Commitlint, Oxc 相关
   - internal/lint-configs/*
-  # 项目演示，用于平时组件开发调试
   - playground
-  # 各种组件封装
   - packages/*
 
-# 命名 catalog：在 package.json 中用 catalog:<name> 引用
-# 分类原则：按职责划分，便于版本统一与升级
 catalogs:
-  # 工程化 / CLI：版本发布、Git 钩子、TypeScript、脚本常用
   cli:
     '@changesets/cli': ^2.29.8
     '@types/node': ^24.10.1
     fast-glob: ^3.3.3
     lefthook: ^2.0.16
-    typescript: ~5.9.3
-
-  # 代码质量：Lint、格式化、Commit 规范、Changelog
+    typescript: ~5.9.0
+  docs:
+    '@nolebase/vitepress-plugin-enhanced-readabilities': ^2.18.2
+    '@nolebase/vitepress-plugin-git-changelog': ^2.18.2
+    '@nolebase/vitepress-plugin-git-changelog/client': ^2.18.2
+    '@shikijs/vitepress-twoslash': ^3.22.0
+    '@vitepress-demo-preview/component': ^2.6.1
+    '@vitepress-demo-preview/core': ^0.3.0
+    '@vitepress-demo-preview/plugin': ^1.4.1
+    vitepress: 2.0.0-alpha.16
+    vitepress-sidebar: ^1.33.1
   lint-format:
     '@antfu/eslint-config': ^7.2.0
     '@changesets/changelog-github': 0.5.2
@@ -43,45 +44,26 @@ catalogs:
     globals: 17.3.0
     lint-staged: ^16.2.7
     oxlint: 1.43.0
-
-  # 通用工具库
-  # utils:
-  # '@antfu/utils': ^9.3.0
-
-  # ---------------------------------------------------------------------------
-  # 以下为可扩展 catalog，需要时取消注释并填写版本即可，package.json 中用 catalog:<name> 引用
-  # ---------------------------------------------------------------------------
-
-  # 文档站：使用 Vitepress 等时启用，用于 docs 等包
-  # docs:
-  #   shiki: ^3.7.0
-  #   vitepress: ^2.0.0
-
-  # 测试：单元测试、E2E 等，用于 apps/playground/packages 等
-  # test:
-  #   playwright: ^1.49.0
-  #   vitest: ^3.0.0
-
-  # 样式 / CSS 工具链：Tailwind、PostCSS 等
   style:
-    # autoprefixer: ^10.4.24
-    # postcss: ^8.5.6
     tailwindcss: ^4.2.0
-
-  # 构建：Vite、打包与产物
   vite:
     '@tailwindcss/vite': ^4.2.0
     '@vitejs/plugin-vue': ^6.0.2
     '@vitejs/plugin-vue-jsx': ^5.1.4
-    # 由于当前 vue-vine 不支持 vite@8.0.x 所以暂时使用 7.x 的版本
     vite: ^7.3.0
-  # Vue 生态：运行时与工具链
   vue:
+    '@element-plus/icons-vue': ^2.3.2
     '@vue/tsconfig': ^0.8.1
+    element-plus: ^2.13.1
+    portal-vue: ^3.0.0
     vue: ^3.5.25
-    # vue-tsc: ^3.1.8
+    # vue-router: ^4.6.3
     vue-vine: ^1.7.27
     vue-vine-tsc: ^1.7.27
-# 允许运行构建脚本的依赖
+
+ignoredBuiltDependencies:
+  - less
+  - vue-demi
+
 onlyBuiltDependencies:
   - lefthook

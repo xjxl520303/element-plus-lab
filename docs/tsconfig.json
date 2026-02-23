@@ -1,0 +1,19 @@
+{
+  "extends": "@element-plus-lab/tsconfig/app.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./examples/*"]
+    },
+    "types": ["vite/client", "vue-vine/macros"]
+  },
+  "include": [
+    "examples/**/*.ts",
+    "examples/**/*.tsx",
+    "examples/**/*.vue",
+    "examples/**/*.vine.ts",
+    ".vitepress/**/*.ts",
+    ".vitepress/**/*.mts",
+    ".vitepress/**/*.vue"
+  ]
+}

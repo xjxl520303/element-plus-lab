@@ -8,7 +8,8 @@
     "lint:fix": "oxlint && eslint --fix",
     "changeset": "changeset",
     "version": "changeset version",
-    "version:snapshot": "changeset version --snapshot"
+    "version:snapshot": "changeset version --snapshot",
+    "docs:dev": "pnpm -F @element-plus-lab/docs run dev"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:cli",

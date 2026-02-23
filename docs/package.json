@@ -1,0 +1,33 @@
+{
+  "name": "@element-plus-lab/docs",
+  "type": "module",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview"
+  },
+  "dependencies": {
+    "@element-plus/icons-vue": "catalog:vue",
+    "element-plus": "catalog:vue",
+    "portal-vue": "catalog:vue",
+    "vue": "catalog:vue"
+  },
+  "devDependencies": {
+    "@element-plus-lab/tsconfig": "workspace:*",
+    "@nolebase/vitepress-plugin-enhanced-readabilities": "catalog:docs",
+    "@nolebase/vitepress-plugin-git-changelog": "catalog:docs",
+    "@nolebase/vitepress-plugin-git-changelog/client": "catalog:docs",
+    "@shikijs/vitepress-twoslash": "catalog:docs",
+    "@tailwindcss/vite": "catalog:vite",
+    "@vitepress-demo-preview/component": "catalog:docs",
+    "@vitepress-demo-preview/core": "catalog:docs",
+    "@vitepress-demo-preview/plugin": "catalog:docs",
+    "tailwindcss": "catalog:style",
+    "typescript": "catalog:cli",
+    "vitepress": "catalog:docs",
+    "vitepress-sidebar": "catalog:docs",
+    "vue-vine": "catalog:vue"
+  }
+}
