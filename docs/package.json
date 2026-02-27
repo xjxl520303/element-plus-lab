@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "@element-plus-lab/tsconfig": "workspace:*",
+    "@iconify/json": "catalog:vite",
     "@nolebase/vitepress-plugin-enhanced-readabilities": "catalog:docs",
     "@nolebase/vitepress-plugin-git-changelog": "catalog:docs",
     "@nolebase/vitepress-plugin-git-changelog/client": "catalog:docs",
@@ -26,6 +27,11 @@
     "@vitepress-demo-preview/plugin": "catalog:docs",
     "tailwindcss": "catalog:style",
     "typescript": "catalog:cli",
+    "unplugin-auto-import": "catalog:vite",
+    "unplugin-element-plus": "catalog:vite",
+    "unplugin-icons": "catalog:vite",
+    "unplugin-turbo-console": "catalog:vite",
+    "unplugin-vue-components": "catalog:vite",
     "vitepress": "catalog:docs",
     "vitepress-sidebar": "catalog:docs",
     "vue-vine": "catalog:vue"

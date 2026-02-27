@@ -10,6 +10,12 @@ import {
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash';
 import { VineVitePlugin } from 'vue-vine/vite';
 import tailwindcss from '@tailwindcss/vite';
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import ElementPlus from 'unplugin-element-plus/vite'
+import Icons from 'unplugin-icons/vite'
+import TurboConsole from 'unplugin-turbo-console/vite'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const alias = {
@@ -102,6 +108,19 @@ const vitePressOptions: UserConfig = {
       GitChangelogMarkdownSection(),
       VineVitePlugin(),
       tailwindcss(),
+      AutoImport({
+        resolvers: [ElementPlusResolver()],
+      }),
+      Components({
+        resolvers: [ElementPlusResolver()],
+      }),
+      ElementPlus({
+        useSource: true,
+      }),
+      Icons(),
+      TurboConsole({
+        launchEditor: false
+      })
     ],
     resolve: {
       alias,
@@ -114,55 +133,13 @@ const vitePressOptions: UserConfig = {
       ],
     },
     ssr: {
+      // 这些包在 SSR 构建阶段需要让 Vite 处理（否则 Node 会直接尝试加载 .vue / .css）
       noExternal: [
         '@nolebase/vitepress-plugin-enhanced-readabilities',
         '@nolebase/ui',
+        'element-plus',
       ],
     },
-    build: {
-      rollupOptions: {
-        output: {
-          manualChunks(id) {
-            if (!id.includes('node_modules')) return;
-
-            const moduleId = id.replace(/\\/g, '/');
-
-            // 1) Vue 全家桶
-            if (/node_modules\/(vue|@vue\/|vue-router|vue-vine|@vue-vine\/)/.test(moduleId)) {
-              return 'vue';
-            }
-
-            // 2) Element Plus 生态
-            if (
-              /node_modules\/(element-plus|@element-plus\/|@ctrl\/tinycolor|@floating-ui\/|@popperjs\/core|async-validator|dayjs|lodash-unified|memoize-one|normalize-wheel-es)\//.test(
-                moduleId
-              )
-            ) {
-              return 'element-plus';
-            }
-
-            // 3) Portal
-            if (/node_modules\/portal-vue\//.test(moduleId)) {
-              return 'portal';
-            }
-
-            // 4) VueUse 生态
-            if (/node_modules\/(@vueuse\/|vue-demi)/.test(moduleId)) {
-              return 'vue-use';
-            }
-
-            // 5) 文档插件生态统一 vendor（其余依赖交给 Rollup 自动分配，避免循环 chunk）
-            if (
-              /node_modules\/(@nolebase\/|@vitepress-demo-preview\/|vitepress-sidebar|@shikijs\/|shiki|vitepress\/|floating-vue\/|markdown-it|markdown-it-container)\//.test(
-                moduleId
-              )
-            ) {
-              return 'vendor';
-            }
-          },
-        },
-      }
-    }
   },
 }
 

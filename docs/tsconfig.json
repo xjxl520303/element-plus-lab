@@ -7,7 +7,7 @@
     "paths": {
       "@/*": ["./examples/*"]
     },
-    "types": ["vite/client", "vue-vine/macros"]
+    "types": ["vite/client", "vue-vine/macros", "unplugin-icons/types/vue", "unplugin-turbo-console/client"]
   },
   "include": [
     "**/*.d.ts",
