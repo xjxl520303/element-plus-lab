@@ -11,12 +11,14 @@
     "version:snapshot": "changeset version --snapshot",
     "docs:dev": "pnpm -F @element-plus-lab/docs run dev",
     "docs:build": "pnpm -F @element-plus-lab/docs run build",
-    "docs:preview": "pnpm -F @element-plus-lab/docs run preview"
+    "docs:preview": "pnpm -F @element-plus-lab/docs run preview",
+    "release": "pnpm -F element-plus-lab run release"
   },
   "devDependencies": {
     "@changesets/cli": "catalog:cli",
     "@commitlint/cli": "catalog:lint-format",
     "@element-plus-lab/commitlint-config": "workspace:*",
+    "@element-plus-lab/components": "workspace:*",
     "@element-plus-lab/eslint-config": "workspace:*",
     "czg": "catalog:lint-format",
     "eslint": "catalog:lint-format",

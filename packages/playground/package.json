@@ -9,6 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "element-plus": "catalog:vue",
+    "element-plus-lab": "workspace:*",
+    "portal-vue": "catalog:vue",
     "vue": "catalog:vue"
   },
   "devDependencies": {
@@ -17,8 +20,14 @@
     "@types/node": "catalog:cli",
     "@vitejs/plugin-vue": "catalog:vite",
     "@vitejs/plugin-vue-jsx": "catalog:vite",
+    "sass-embedded": "catalog:vite",
     "tailwindcss": "catalog:style",
     "typescript": "catalog:cli",
+    "unplugin-auto-import": "catalog:vite",
+    "unplugin-element-plus": "catalog:vite",
+    "unplugin-icons": "catalog:vite",
+    "unplugin-turbo-console": "catalog:vite",
+    "unplugin-vue-components": "catalog:vite",
     "vite": "catalog:vite",
     "vue-vine": "catalog:vue",
     "vue-vine-tsc": "catalog:vue"

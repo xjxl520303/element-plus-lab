@@ -1,0 +1,23 @@
+{
+  "name": "@element-plus-lab/components",
+  "version": "0.0.1",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "description": "all components",
+  "author": "xjxl520303 <xjxl520303@gmail.com",
+  "license": "MIT",
+  "main": "index.ts",
+  "types": "index.d.ts",
+  "peerDependencies": {
+    "@vueuse/core": "catalog:vue",
+    "element-plus": "catalog:vue",
+    "portal-vue": "catalog:vue",
+    "ulid": "catalog:vue",
+    "vue": "catalog:vue"
+  },
+  "devDependencies": {
+    "@element-plus-lab/tsconfig": "workspace:*",
+    "vite": "catalog:vite",
+    "vue-vine": "catalog:vue"
+  }
+}

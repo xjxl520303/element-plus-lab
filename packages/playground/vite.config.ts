@@ -1,9 +1,15 @@
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
+import type { PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import { VineVitePlugin } from 'vue-vine/vite'
 import tailwindcss from '@tailwindcss/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import ElementPlus from 'unplugin-element-plus/vite'
+import Icons from 'unplugin-icons/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -12,7 +18,17 @@ export default defineConfig({
     vueJsx(),
     VineVitePlugin(),
     tailwindcss(),
-  ],
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
+    ElementPlus({
+      useSource: true,
+    }),
+    Icons(),
+  ] as PluginOption[],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),

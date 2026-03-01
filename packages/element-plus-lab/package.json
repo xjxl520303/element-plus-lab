@@ -1,0 +1,103 @@
+{
+  "name": "element-plus-lab",
+  "type": "module",
+  "version": "0.0.0",
+  "description": "A business component library based on Element Plus",
+  "author": "xjxl520303 <xjxl520303@gmail.com",
+  "license": "MIT",
+  "homepage": "https://element-plus-lab-docs.vercel.app/",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xjxl520303/element-plus-lab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xjxl520303/element-plus-lab/issues"
+  },
+  "keywords": [
+    "element-plus",
+    "element",
+    "component library",
+    "cz-git",
+    "portal-vue",
+    "lefthook",
+    "mockoon",
+    "turborepo",
+    "vitepress",
+    "vue-use",
+    "vue-vine",
+    "vue"
+  ],
+  "sideEffects": false,
+  "exports": {
+    ".": "./index.ts",
+    "./package.json": "./package.json"
+  },
+  "main": "dist/lib/index.js",
+  "module": "dist/es/index.mjs",
+  "unpkg": "dist/index.full.js",
+  "jsdelivr": "dist/index.full.js",
+  "types": "dist/es/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "exports": {
+      ".": {
+        "types": "./dist/es/index.d.ts",
+        "import": "./dist/es/index.mjs",
+        "require": "./dist/lib/index.js"
+      },
+      "./es": {
+        "types": "./dist/es/index.d.ts",
+        "import": "./dist/es/index.mjs"
+      },
+      "./lib": {
+        "types": "./dist/lib/index.d.ts",
+        "require": "./dist/lib/index.js"
+      },
+      "./full": {
+        "types": "./dist/es/index.d.ts",
+        "import": "./dist/index.full.js",
+        "require": "./dist/index.full.js"
+      },
+      "./package.json": "./package.json"
+    }
+  },
+  "scripts": {
+    "build": "node scripts/clean-dist.js && tsdown && node scripts/rename-full.js",
+    "dev": "pnpm --filter @element-plus-lab/playground dev",
+    "test": "vitest",
+    "typecheck": "vue-vine-tsc --noEmit",
+    "release": "bumpp && pnpm publish",
+    "prepublishOnly": "pnpm run build"
+  },
+  "peerDependencies": {
+    "element-plus": "^2.13.0",
+    "portal-vue": "^3.0.0",
+    "vue": "^3.5.0"
+  },
+  "dependencies": {
+    "@vueuse/core": "catalog:vue",
+    "ulid": "catalog:vue"
+  },
+  "devDependencies": {
+    "@element-plus-lab/tsconfig": "workspace:*",
+    "@types/node": "catalog:cli",
+    "@vitejs/plugin-vue": "catalog:vite",
+    "@vitejs/plugin-vue-jsx": "catalog:vite",
+    "@vitest/browser-playwright": "catalog:vitest",
+    "bumpp": "catalog:cli",
+    "playwright": "catalog:vitest",
+    "portal-vue": "catalog:vue",
+    "tsdown": "catalog:vite",
+    "typescript": "catalog:cli",
+    "ulid": "catalog:vue",
+    "vite": "catalog:vite",
+    "vitest": "catalog:vitest",
+    "vitest-browser-vue": "catalog:vitest",
+    "vue": "catalog:vue",
+    "vue-vine": "catalog:vue",
+    "vue-vine-tsc": "catalog:vue"
+  }
+}

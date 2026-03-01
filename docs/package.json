@@ -32,6 +32,7 @@
     "unplugin-icons": "catalog:vite",
     "unplugin-turbo-console": "catalog:vite",
     "unplugin-vue-components": "catalog:vite",
+    "vite": "catalog:vite",
     "vitepress": "catalog:docs",
     "vitepress-sidebar": "catalog:docs",
     "vue-vine": "catalog:vue"

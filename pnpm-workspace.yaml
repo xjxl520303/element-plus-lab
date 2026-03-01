@@ -1,5 +1,4 @@
 shellEmulator: true
-
 trustPolicy: no-downgrade
 
 packages:
@@ -14,9 +13,10 @@ catalogs:
   cli:
     '@changesets/cli': ^2.29.8
     '@types/node': ^24.10.1
+    bumpp: ^10.4.1
     fast-glob: ^3.3.3
     lefthook: ^2.0.16
-    typescript: ~5.9.0
+    typescript: ~5.9.3
   docs:
     '@nolebase/vitepress-plugin-enhanced-readabilities': ^2.18.2
     '@nolebase/vitepress-plugin-git-changelog': ^2.18.2
@@ -46,19 +46,27 @@ catalogs:
     '@tailwindcss/vite': ^4.2.0
     '@vitejs/plugin-vue': ^6.0.2
     '@vitejs/plugin-vue-jsx': ^5.1.4
+    sass-embedded: 1.97.3
+    tsdown: ^0.21.0-beta.2
     unplugin-auto-import: ^21.0.0
     unplugin-element-plus: ^0.11.2
     unplugin-icons: ^23.0.1
     unplugin-turbo-console: 2.3.0
     unplugin-vue-components: ^31.0.0
     vite: ^7.3.0
+  vitest:
+    '@vitest/browser-playwright': ^4.0.18
+    playwright: ^1.58.2
+    vitest: ^4.0.18
+    vitest-browser-vue: ^2.0.2
   vue:
     '@element-plus/icons-vue': ^2.3.2
     '@vue/tsconfig': ^0.8.1
+    '@vueuse/core': ^14.2.1
     element-plus: ^2.13.1
     portal-vue: ^3.0.0
+    ulid: ^3.0.2
     vue: ^3.5.25
-    # vue-router: ^4.6.3
     vue-vine: ^1.7.27
     vue-vine-tsc: ^1.7.27
 
@@ -67,4 +75,5 @@ ignoredBuiltDependencies:
   - vue-demi
 
 onlyBuiltDependencies:
+  - '@parcel/watcher'
   - lefthook
