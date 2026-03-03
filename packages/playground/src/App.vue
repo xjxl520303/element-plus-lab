@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { useBusDialog } from 'element-plus-lab'
+import { useDialog } from 'element-plus-lab'
 import HelloWorld from '@/components/hello-world.vine'
 import { PortalTarget } from 'portal-vue'
 
-const dialog = useBusDialog()
+const dialog = useDialog()
 
 async function openTestDialog() {
   const result = await dialog.openDialog({
@@ -36,7 +36,7 @@ async function openTestDialog() {
     Hello world!
   </h1>
   <!-- portal-vue 目标，供 useBusDialog 渲染对话框 -->
-  <PortalTarget name="bus-dialog" />
+  <PortalTarget name="ell-dialog" />
   <button
     type="button"
     class="mt-4 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"

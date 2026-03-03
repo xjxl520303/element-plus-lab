@@ -1,3 +1,3 @@
 export * from './src/types';
 
-export { useBusDialog } from './src/use-dialog';
+export { useDialog } from './src/use-dialog';

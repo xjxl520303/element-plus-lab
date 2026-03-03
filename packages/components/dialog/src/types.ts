@@ -12,9 +12,9 @@ import type { VNodeChild } from 'vue';
  * - `close`：点击关闭按钮关闭
  * - `ok`：确认关闭
  */
-export type BusDialogCloseReason = 'cancel' | 'close' | 'ok';
+export type EllDialogCloseReason = 'cancel' | 'close' | 'ok';
 
-export interface BusDialogProps {
+export interface EllDialogProps {
   /**
    * 对话框标题
    *
@@ -70,14 +70,14 @@ export interface BusDialogProps {
    * 渲染对话框头部
    *
    * @description 渲染对话框头部，用于自定义对话框头部内容
-   * @remarks 优先级高于使用 portal-vue 指定的内容 `${uid}-bus-dialog-header`
+   * @remarks 优先级高于使用 portal-vue 指定的内容 `${uid}-el-dialog-header`
    *
    * @param resolve 成功关闭对话框方法（`resolve({ reason: 'ok', data: '...'})`）
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    * @returns 对话框头部内容
    */
   renderHeader?: (
-    resolve: (v: BusDialogResult | Promise<BusDialogResult>) => void,
+    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -85,14 +85,14 @@ export interface BusDialogProps {
    * 渲染对话框主体内容
    *
    * @description 渲染对话框主体内容，用于自定义对话框主体内容
-   * @remarks 优先级高于使用 portal-vue 指定的内容 `${uid}-bus-dialog-content`
+   * @remarks 优先级高于使用 portal-vue 指定的内容 `${uid}-el-dialog-content`
    *
    * @param resolve 成功关闭对话框方法（`resolve({ reason: 'ok', data: '...'})`）
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    * @returns 对话框主体内容
    */
   render?: (
-    resolve: (v: BusDialogResult | Promise<BusDialogResult>) => void,
+    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -100,14 +100,14 @@ export interface BusDialogProps {
    * 渲染对话框底部
    *
    * @description 渲染对话框底部，用于自定义对话框底部内容
-   * @remarks 优先级高于使用 portal-vue 指定的内容 `${uid}-bus-dialog-footer`
+   * @remarks 优先级高于使用 portal-vue 指定的内容 `${uid}-el-dialog-footer`
    *
    * @param resolve 成功关闭对话框方法（`resolve({ reason: 'ok', data: '...'})`）
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    * @returns 对话框底部内容
    */
   renderFooter?: (
-    resolve: (v: BusDialogResult | Promise<BusDialogResult>) => void,
+    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -119,8 +119,8 @@ export interface BusDialogProps {
    * @returns 返回 `false` 阻止关闭，返回 `true`、`undefined` 或 `Promise<void>` 允许关闭。也可以通过 `resolve`/`reject` 手动控制关闭
    */
   beforeClose?: (
-    resolve: (v: BusDialogResult) => void,
-    reject: (v: BusDialogResult) => void,
+    resolve: (v: EllDialogResult) => void,
+    reject: (v: EllDialogResult) => void,
   ) => boolean | Promise<boolean | undefined> | Promise<void> | undefined;
 
   /**
@@ -130,8 +130,8 @@ export interface BusDialogProps {
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    */
   okHandler?: (
-    resolve: (v: BusDialogResult) => void,
-    reject: (v: BusDialogResult) => void,
+    resolve: (v: EllDialogResult) => void,
+    reject: (v: EllDialogResult) => void,
   ) => Promise<void> | void;
 
   /**
@@ -141,8 +141,8 @@ export interface BusDialogProps {
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    */
   cancelHandler?: (
-    resolve: (v: BusDialogResult) => void,
-    reject: (v: BusDialogResult) => void,
+    resolve: (v: EllDialogResult) => void,
+    reject: (v: EllDialogResult) => void,
   ) => Promise<void> | void;
 }
 
@@ -154,7 +154,7 @@ export interface BusDialogProps {
  * - `data`：对话框关闭时传递的参数
  * - `reason`：关闭原因
  */
-export interface BusDialogResult {
+export interface EllDialogResult {
   /**
    * 对话框关闭时传递的参数
    */
@@ -163,5 +163,5 @@ export interface BusDialogResult {
   /**
    * 关闭原因
    */
-  reason: BusDialogCloseReason;
+  reason: EllDialogCloseReason;
 }
