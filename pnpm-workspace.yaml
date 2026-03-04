@@ -1,4 +1,5 @@
 shellEmulator: true
+
 trustPolicy: no-downgrade
 
 packages:
@@ -25,6 +26,7 @@ catalogs:
     '@vitepress-demo-preview/component': ^2.6.1
     '@vitepress-demo-preview/core': ^0.3.0
     '@vitepress-demo-preview/plugin': ^1.4.1
+    shiki: ^3.7.0
     vitepress: 2.0.0-alpha.16
     vitepress-sidebar: ^1.33.1
   lint-format:
