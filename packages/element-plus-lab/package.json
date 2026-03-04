@@ -66,7 +66,7 @@
     "dev": "pnpm --filter @element-plus-lab/playground dev",
     "test": "vitest",
     "typecheck": "vue-vine-tsc --noEmit",
-    "release": "bumpp && pnpm publish",
+    "release": "pnpm publish --access public",
     "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
@@ -84,7 +84,6 @@
     "@vitejs/plugin-vue": "catalog:vite",
     "@vitejs/plugin-vue-jsx": "catalog:vite",
     "@vitest/browser-playwright": "catalog:vitest",
-    "bumpp": "catalog:cli",
     "playwright": "catalog:vitest",
     "portal-vue": "catalog:vue",
     "tsdown": "catalog:vite",
