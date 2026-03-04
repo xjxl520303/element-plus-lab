@@ -29,7 +29,24 @@
   ],
   "sideEffects": false,
   "exports": {
-    ".": "./index.ts",
+    ".": {
+      "types": "./dist/es/index.d.ts",
+      "import": "./dist/es/index.mjs",
+      "require": "./dist/lib/index.js"
+    },
+    "./es": {
+      "types": "./dist/es/index.d.ts",
+      "import": "./dist/es/index.mjs"
+    },
+    "./lib": {
+      "types": "./dist/lib/index.d.ts",
+      "require": "./dist/lib/index.js"
+    },
+    "./full": {
+      "types": "./dist/es/index.d.ts",
+      "import": "./dist/index.full.js",
+      "require": "./dist/index.full.js"
+    },
     "./package.json": "./package.json"
   },
   "main": "dist/lib/index.js",
@@ -42,28 +59,7 @@
   ],
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/",
-    "exports": {
-      ".": {
-        "types": "./dist/es/index.d.ts",
-        "import": "./dist/es/index.mjs",
-        "require": "./dist/lib/index.js"
-      },
-      "./es": {
-        "types": "./dist/es/index.d.ts",
-        "import": "./dist/es/index.mjs"
-      },
-      "./lib": {
-        "types": "./dist/lib/index.d.ts",
-        "require": "./dist/lib/index.js"
-      },
-      "./full": {
-        "types": "./dist/es/index.d.ts",
-        "import": "./dist/index.full.js",
-        "require": "./dist/index.full.js"
-      },
-      "./package.json": "./package.json"
-    }
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "node scripts/clean-dist.js && tsdown && node scripts/rename-full.js",
