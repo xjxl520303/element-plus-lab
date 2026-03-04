@@ -11,6 +11,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "catalog:vue",
     "element-plus": "catalog:vue",
+    "element-plus-lab": "workspace:*",
     "portal-vue": "catalog:vue",
     "vue": "catalog:vue"
   },
@@ -22,9 +23,11 @@
     "@nolebase/vitepress-plugin-git-changelog/client": "catalog:docs",
     "@shikijs/vitepress-twoslash": "catalog:docs",
     "@tailwindcss/vite": "catalog:vite",
+    "@vitejs/plugin-vue-jsx": "catalog:vite",
     "@vitepress-demo-preview/component": "catalog:docs",
     "@vitepress-demo-preview/core": "catalog:docs",
     "@vitepress-demo-preview/plugin": "catalog:docs",
+    "shiki": "catalog:docs",
     "tailwindcss": "catalog:style",
     "typescript": "catalog:cli",
     "unplugin-auto-import": "catalog:vite",

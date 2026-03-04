@@ -5,7 +5,8 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "paths": {
-      "@/*": ["./examples/*"]
+      "@/*": ["./examples/*"],
+      "element-plus-lab": ["../packages/element-plus-lab/index.ts"]
     },
     "types": ["vite/client", "vue-vine/macros", "unplugin-icons/types/vue", "unplugin-turbo-console/client"]
   },

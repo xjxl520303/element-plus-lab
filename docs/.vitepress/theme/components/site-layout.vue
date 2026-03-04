@@ -5,6 +5,7 @@ import {
   NolebaseEnhancedReadabilitiesScreenMenu,
 } from '@nolebase/vitepress-plugin-enhanced-readabilities/client';
 import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css';
+import DemoHighlightTrigger from './demo-highlight-trigger.vue';
 
 const { Layout } = DefaultTheme;
 </script>
@@ -18,5 +19,6 @@ const { Layout } = DefaultTheme;
       <NolebaseEnhancedReadabilitiesScreenMenu />
     </template>
   </layout>
-  <portal-target name="bus-dialog" multiple />
+  <portal-target name="ell-dialog" multiple />
+  <DemoHighlightTrigger />
 </template>

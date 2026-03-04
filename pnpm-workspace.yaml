@@ -1,5 +1,6 @@
 shellEmulator: true
-trustPolicy: no-downgrade
+
+trustPolicy: all
 
 packages:
   - apps/*
@@ -9,11 +10,12 @@ packages:
   - playground
   - packages/*
 
+# catalog:
+#   element-plus-lab: npm:element-plus-lab@latest
 catalogs:
   cli:
     '@changesets/cli': ^2.29.8
     '@types/node': ^24.10.1
-    bumpp: ^10.4.1
     fast-glob: ^3.3.3
     lefthook: ^2.0.16
     typescript: ~5.9.3
@@ -25,6 +27,7 @@ catalogs:
     '@vitepress-demo-preview/component': ^2.6.1
     '@vitepress-demo-preview/core': ^0.3.0
     '@vitepress-demo-preview/plugin': ^1.4.1
+    shiki: ^3.7.0
     vitepress: 2.0.0-alpha.16
     vitepress-sidebar: ^1.33.1
   lint-format:

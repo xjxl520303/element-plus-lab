@@ -16,10 +16,13 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import ElementPlus from 'unplugin-element-plus/vite'
 import Icons from 'unplugin-icons/vite'
 import TurboConsole from 'unplugin-turbo-console/vite'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const alias = {
   '@': path.resolve(__dirname, '../examples'),
+  // 文档 & Twoslash 本地开发时直接指向源码，避免必须先 build 组件库
+  'element-plus-lab': path.resolve(__dirname, '../../packages/element-plus-lab/index.ts'),
 };
 
 const vitePressOptions: UserConfig = {
@@ -47,22 +50,24 @@ const vitePressOptions: UserConfig = {
       // { text: '首页', link: '/' },
       // { text: '文章', link: '/articles/index' },
       // { text: '更新日志', link: 'https://github.com/xjxl520303/element-plus-lab/blob/main/CHANGELOG.md' },
-      {
-        activeMatch: '^/(guide|components)/',
-        text: '文档',
-        items: [
-          {
-            activeMatch: '^/guide/',
-            link: '/guide/introduction/element-plus-lab',
-            text: '指南',
-          },
-          {
-            activeMatch: '^/components/',
-            link: '/components/introduction',
-            text: '组件',
-          },
-        ],
-      },
+      // {
+      //   activeMatch: '^/(guide|components)/',
+      //   text: '文档',
+      //   items: [
+      //     {
+      //       activeMatch: '^/guide/',
+      //       link: '/guide/introduction/element-plus-lab',
+      //       text: '指南',
+      //     },
+      //     {
+      //       activeMatch: '^/components/',
+      //       link: '/components/introduction',
+      //       text: '组件',
+      //     },
+      //   ],
+      // },
+      { text: '指南', link: '/guide/introduction/element-plus-lab' },
+      { text: '组件', link: '/components/introduction'}
     ],
     socialLinks: [
       {
@@ -91,7 +96,7 @@ const vitePressOptions: UserConfig = {
     },
     codeTransformers: [transformerTwoslash()],
     // Explicitly load these languages for types highlighting
-    languages: ['js', 'jsx', 'ts', 'tsx'],
+    languages: ['js', 'jsx', 'ts', 'tsx', 'vue'],
   },
   vite: {
     plugins: [
@@ -106,6 +111,7 @@ const vitePressOptions: UserConfig = {
         repoURL: () => 'https://github.com/xjxl520303/element-plus-lab',
       }),
       GitChangelogMarkdownSection(),
+      vueJsx(),
       VineVitePlugin(),
       tailwindcss(),
       AutoImport({
