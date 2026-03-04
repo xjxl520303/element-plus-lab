@@ -21,10 +21,6 @@ catalogs:
     typescript:
       specifier: ~5.9.3
       version: 5.9.3
-  default:
-    element-plus-lab:
-      specifier: npm:element-plus-lab@latest
-      version: 0.0.1
   docs:
     '@nolebase/vitepress-plugin-enhanced-readabilities':
       specifier: ^2.18.2
@@ -220,8 +216,8 @@ importers:
         specifier: catalog:vue
         version: 2.13.2(vue@3.5.28(typescript@5.9.3))
       element-plus-lab:
-        specifier: 'catalog:'
-        version: 0.0.1(element-plus@2.13.2(vue@3.5.28(typescript@5.9.3)))(portal-vue@3.0.0(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3))
+        specifier: workspace:*
+        version: link:../packages/element-plus-lab
       portal-vue:
         specifier: catalog:vue
         version: 3.0.0(vue@3.5.28(typescript@5.9.3))
@@ -2906,13 +2902,6 @@ packages:
 
   electron-to-chromium@1.5.286:
     resolution: {integrity: sha512-9tfDXhJ4RKFNerfjdCcZfufu49vg620741MNs26a9+bhLThdB+plgMeou98CAaHu/WATj2iHOOHTp1hWtABj2A==}
-
-  element-plus-lab@0.0.1:
-    resolution: {integrity: sha512-JfY8YO+yQOMK0BardJYEasByfhVcwV0JbZSJ7MjMprMmPfIeYPKU+9siPkE0QycXVKZFzFIQx25lnqAx74nfJA==}
-    peerDependencies:
-      element-plus: ^2.13.0
-      portal-vue: ^3.0.0
-      vue: ^3.5.0
 
   element-plus@2.13.2:
     resolution: {integrity: sha512-Zjzm1NnFXGhV4LYZ6Ze9skPlYi2B4KAmN18FL63A3PZcjhDfroHwhtM6RE8BonlOPHXUnPQynH0BgaoEfvhrGw==}
@@ -8044,14 +8033,6 @@ snapshots:
       semver: 7.7.4
 
   electron-to-chromium@1.5.286: {}
-
-  element-plus-lab@0.0.1(element-plus@2.13.2(vue@3.5.28(typescript@5.9.3)))(portal-vue@3.0.0(vue@3.5.28(typescript@5.9.3)))(vue@3.5.28(typescript@5.9.3)):
-    dependencies:
-      '@vueuse/core': 14.2.1(vue@3.5.28(typescript@5.9.3))
-      element-plus: 2.13.2(vue@3.5.28(typescript@5.9.3))
-      portal-vue: 3.0.0(vue@3.5.28(typescript@5.9.3))
-      ulid: 3.0.2
-      vue: 3.5.28(typescript@5.9.3)
 
   element-plus@2.13.2(vue@3.5.28(typescript@5.9.3)):
     dependencies:

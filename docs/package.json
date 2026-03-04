@@ -11,7 +11,7 @@
   "dependencies": {
     "@element-plus/icons-vue": "catalog:vue",
     "element-plus": "catalog:vue",
-    "element-plus-lab": "catalog:",
+    "element-plus-lab": "workspace:*",
     "portal-vue": "catalog:vue",
     "vue": "catalog:vue"
   },

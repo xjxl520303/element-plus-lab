@@ -10,8 +10,8 @@ packages:
   - playground
   - packages/*
 
-catalog:
-  element-plus-lab: npm:element-plus-lab@latest
+# catalog:
+#   element-plus-lab: npm:element-plus-lab@latest
 catalogs:
   cli:
     '@changesets/cli': ^2.29.8
