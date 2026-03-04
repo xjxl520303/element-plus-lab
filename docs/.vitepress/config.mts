@@ -21,6 +21,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const alias = {
   '@': path.resolve(__dirname, '../examples'),
+  // 文档 & Twoslash 本地开发时直接指向源码，避免必须先 build 组件库
+  'element-plus-lab': path.resolve(__dirname, '../../packages/element-plus-lab/index.ts'),
 };
 
 const vitePressOptions: UserConfig = {

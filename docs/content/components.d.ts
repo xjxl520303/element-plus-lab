@@ -13,12 +13,10 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     ElButton: typeof import('element-plus/es')['ElButton']
-    ElIcon: typeof import('element-plus/es')['ElIcon']
   }
 }
 
 // For TSX support
 declare global {
   const ElButton: typeof import('element-plus/es')['ElButton']
-  const ElIcon: typeof import('element-plus/es')['ElIcon']
 }
