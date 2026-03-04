@@ -13,7 +13,6 @@ export default defineConfig([
     minify: false,
     clean: false,
     dts: { vue: true },
-    exports: { devExports: true },
     outputOptions(options) {
       ;(options as Record<string, unknown>).entryFileNames = '[name].mjs'
       ;(options as Record<string, unknown>).chunkFileNames = '[name].mjs'
