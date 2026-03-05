@@ -1,5 +1,5 @@
 ---
-title: 分支（摘取/合并）和发版规范
+title: 分支（拉取/合并）和发版规范
 ---
 
 # 分支（拉取/合并）和发版规范
@@ -8,9 +8,9 @@ title: 分支（摘取/合并）和发版规范
 
 ## 分支拉取
 
-项目的主分支 `main` 是被保护的分支，不可以去接在 `main` 上开发和提交代码，所有的改动必须通过 Merge Request（MR）合入。
+项目的主分支 `main` 是被保护的分支，不可以直接在 `main` 上开发和提交代码，所有的改动必须通过 Merge Request（MR）合入。
 
-功能的新增和问题修复等需要从 `main` 拉取最新代码，具休要求如下：
+功能的新增和问题修复等需要从 `main` 拉取最新代码，具体要求如下：
 
   - 命名建议：`feat/xxx`、`fix/xxx`、`chore/xxx` 等。
   - 开发流程：
@@ -33,9 +33,9 @@ title: 分支（摘取/合并）和发版规范
 - 每次有「对外可见」的变更时（如新增 / 修改 API、修复 bug、行为变更），在对应的功能分支上创建一个 changeset。
 - 一个分支如果包含多种不同层级的变更（例如既有 bugfix，又有新特性），可以根据需要多次创建 changeset。
 
-当前项目只涉及 `docs` 目录和 `packages/element-plus-lab` 包的版本管理需要生成 changelog，其它的部分不涉及。
+当前项目只涉及 `docs` 目录和 `packages/element-plus-lab` 包的版本管理需要生成 changelog，其它部分暂不生成。
 
-项目参考 Element Plus 的提交规范，配置了交互式提交工具 `czg`，在提交完代码后，版本号变更按以下规则进行：
+项目参考 Element Plus 的提交规范，配置了交互式提交工具 `czg`。在创建 changeset 时，选择版本号变更级别可参考以下规则：
 
 - `patch`：向下兼容的修复或小变更以及项目配置和文档的变更。
 - `minor`：向下兼容的新特性。
@@ -50,7 +50,7 @@ title: 分支（摘取/合并）和发版规范
 
 :::
 
-在 `docs/` 或者 `packages/element-plus-lab` 目录下执行 `pnpm changeset` 命令会生成一个 `xxxx-描述.md` 文件。**请将该文件和代码一同提交，随 MR 合入 `main`。**
+在仓库根目录执行 `pnpm changeset` 命令，会以交互方式选择需要更新的包（如 `@element-plus-lab/docs`、`element-plus-lab`），并生成一个 `xxxx-描述.md` 文件。**请将该文件和代码一同提交，随 MR 合入 `main`。**
 
 ::: info
 

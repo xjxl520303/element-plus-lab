@@ -10,7 +10,7 @@
     "version": "changeset version",
     "version:snapshot": "changeset version --snapshot",
     "docs:dev": "pnpm -F @element-plus-lab/docs run dev",
-    "docs:build": "pnpm -F @element-plus-lab/docs run build",
+    "docs:build": "pnpm -F element-plus-lab run build && pnpm -F @element-plus-lab/docs run build",
     "docs:preview": "pnpm -F @element-plus-lab/docs run preview",
     "release": "pnpm -F element-plus-lab run release"
   },
