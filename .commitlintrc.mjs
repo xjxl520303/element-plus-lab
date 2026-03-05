@@ -18,6 +18,7 @@ const scopes = [
   ...getPackages('packages'),
   ...getPackages('internal'),
   'docs',
+  'changeset',
   'play',
   'project',
   'style',
