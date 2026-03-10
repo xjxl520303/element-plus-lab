@@ -2,6 +2,7 @@ import { existsSync, rmSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
-const dist = join(dirname(fileURLToPath(import.meta.url)), '..', 'dist')
+const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..')
+const dist = join(rootDir, 'packages', 'element-plus-lab', 'dist')
 if (existsSync(dist))
   rmSync(dist, { recursive: true })

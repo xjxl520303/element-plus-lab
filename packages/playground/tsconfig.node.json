@@ -1,4 +1,0 @@
-{
-  "extends": "@element-plus-lab/tsconfig/node.json",
-  "include": ["vite.config.ts"]
-}

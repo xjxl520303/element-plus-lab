@@ -1,0 +1,31 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@element-plus-lab/components": ["packages/components"],
+      "element-plus-lab": ["packages/element-plus-lab/index.ts"]
+    }
+  },
+  "include": [
+    "packages/element-plus-lab/**/*.d.ts",
+    "packages/element-plus-lab/**/*.ts",
+    "packages/element-plus-lab/**/*.tsx",
+    "packages/element-plus-lab/**/*.vue",
+    "packages/element-plus-lab/**/*.vine.ts",
+    "packages/components/**/*.d.ts",
+    "packages/components/**/*.ts",
+    "packages/components/**/*.tsx",
+    "packages/components/**/*.vue",
+    "packages/components/**/*.vine.ts",
+    "docs/examples/**/*.ts",
+    "docs/examples/**/*.tsx",
+    "docs/examples/**/*.vue",
+    "docs/.vitepress/**/*.ts",
+    "docs/.vitepress/**/*.mts",
+    "docs/.vitepress/**/*.vue",
+    "docs/.vitepress/**/*.d.ts",
+    "docs/.vitepress/theme/components/**/*.vue"
+  ],
+  "exclude": ["node_modules", "dist", "**/dist"]
+}

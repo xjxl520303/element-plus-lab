@@ -15,7 +15,6 @@
 
   "ignore": [
     "@element-plus-lab/commitlint-config",
-    "@element-plus-lab/eslint-config",
     "@element-plus-lab/components",
     "@element-plus-lab/playground"
   ]

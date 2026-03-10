@@ -5,13 +5,9 @@ trustPolicy: all
 packages:
   - apps/*
   - docs
-  - internal/*
-  - internal/lint-configs/*
   - playground
   - packages/*
 
-# catalog:
-#   element-plus-lab: npm:element-plus-lab@latest
 catalogs:
   cli:
     '@changesets/cli': ^2.29.8
@@ -23,7 +19,6 @@ catalogs:
     '@nolebase/vitepress-plugin-enhanced-readabilities': ^2.18.2
     '@nolebase/vitepress-plugin-git-changelog': ^2.18.2
     '@nolebase/vitepress-plugin-git-changelog/client': ^2.18.2
-    '@shikijs/vitepress-twoslash': ^3.22.0
     '@vitepress-demo-preview/component': ^2.6.1
     '@vitepress-demo-preview/core': ^0.3.0
     '@vitepress-demo-preview/plugin': ^1.4.1
@@ -42,6 +37,8 @@ catalogs:
     globals: 17.3.0
     lint-staged: ^16.2.7
     oxlint: 1.43.0
+    typescript-eslint: ^8.55.0
+    vue-eslint-parser: ^10.1.0
   style:
     tailwindcss: ^4.2.0
   vite:
@@ -49,6 +46,7 @@ catalogs:
     '@tailwindcss/vite': ^4.2.0
     '@vitejs/plugin-vue': ^6.0.2
     '@vitejs/plugin-vue-jsx': ^5.1.4
+    publint: ^0.3.18
     sass-embedded: 1.97.3
     tsdown: ^0.21.0-beta.2
     unplugin-auto-import: ^21.0.0
@@ -56,14 +54,17 @@ catalogs:
     unplugin-icons: ^23.0.1
     unplugin-turbo-console: 2.3.0
     unplugin-vue-components: ^31.0.0
+    unplugin-vue-jsx: ^0.8.1
     vite: ^7.3.0
   vitest:
-    '@vitest/browser-playwright': ^4.0.18
-    playwright: ^1.58.2
+    # '@vitest/browser-playwright': ^4.0.18
+    happy-dom: ^15.11.7
+    # playwright: ^1.58.2
     vitest: ^4.0.18
-    vitest-browser-vue: ^2.0.2
+    # vitest-browser-vue: ^2.0.2
   vue:
     '@element-plus/icons-vue': ^2.3.2
+    '@vue/test-utils': ^2.4.6
     '@vue/tsconfig': ^0.8.1
     '@vueuse/core': ^14.2.1
     element-plus: ^2.13.1

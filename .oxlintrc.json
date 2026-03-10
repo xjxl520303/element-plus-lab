@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.vine.ts", "**/*.vine.tsx"],
+      "rules": {
+        "no-unused-vars": "off"
+      }
+    }
+  ]
+}

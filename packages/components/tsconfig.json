@@ -1,7 +1,0 @@
-{
-  "extends": "@element-plus-lab/tsconfig/app.json",
-  "compilerOptions": {
-    "baseUrl": "."
-  },
-  "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.vue", "**/*.vine.ts"]
-}

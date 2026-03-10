@@ -30,29 +30,37 @@
   "sideEffects": false,
   "exports": {
     ".": {
-      "types": "./dist/es/index.d.ts",
-      "import": "./dist/es/index.mjs",
-      "require": "./dist/lib/index.js"
+      "import": {
+        "types": "./dist/es/index.d.ts",
+        "default": "./dist/es/index.mjs"
+      },
+      "require": {
+        "types": "./dist/es/index.d.cts",
+        "default": "./dist/lib/index.cjs"
+      }
     },
     "./es": {
       "types": "./dist/es/index.d.ts",
       "import": "./dist/es/index.mjs"
     },
     "./lib": {
-      "types": "./dist/lib/index.d.ts",
-      "require": "./dist/lib/index.js"
+      "types": "./dist/es/index.d.ts",
+      "require": {
+        "types": "./dist/es/index.d.cts",
+        "default": "./dist/lib/index.cjs"
+      }
     },
     "./full": {
       "types": "./dist/es/index.d.ts",
-      "import": "./dist/index.full.js",
-      "require": "./dist/index.full.js"
+      "import": "./dist/index.full.cjs",
+      "require": "./dist/index.full.cjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "dist/lib/index.js",
+  "main": "dist/lib/index.cjs",
   "module": "dist/es/index.mjs",
-  "unpkg": "dist/index.full.js",
-  "jsdelivr": "dist/index.full.js",
+  "unpkg": "dist/index.full.cjs",
+  "jsdelivr": "dist/index.full.cjs",
   "types": "dist/es/index.d.ts",
   "files": [
     "dist"
@@ -60,14 +68,6 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
-  },
-  "scripts": {
-    "build": "node scripts/clean-dist.js && tsdown && node scripts/rename-full.js",
-    "dev": "pnpm --filter @element-plus-lab/playground dev",
-    "test": "vitest",
-    "typecheck": "vue-vine-tsc --noEmit",
-    "release": "pnpm publish --access public",
-    "prepublishOnly": "pnpm run build"
   },
   "peerDependencies": {
     "element-plus": "^2.13.0",
@@ -79,21 +79,9 @@
     "ulid": "catalog:vue"
   },
   "devDependencies": {
-    "@element-plus-lab/tsconfig": "workspace:*",
     "@types/node": "catalog:cli",
-    "@vitejs/plugin-vue": "catalog:vite",
-    "@vitejs/plugin-vue-jsx": "catalog:vite",
-    "@vitest/browser-playwright": "catalog:vitest",
-    "playwright": "catalog:vitest",
     "portal-vue": "catalog:vue",
-    "tsdown": "catalog:vite",
-    "typescript": "catalog:cli",
     "ulid": "catalog:vue",
-    "vite": "catalog:vite",
-    "vitest": "catalog:vitest",
-    "vitest-browser-vue": "catalog:vitest",
-    "vue": "catalog:vue",
-    "vue-vine": "catalog:vue",
-    "vue-vine-tsc": "catalog:vue"
+    "vue": "catalog:vue"
   }
 }

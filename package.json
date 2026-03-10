@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "private": true,
   "packageManager": "pnpm@10.28.2",
   "scripts": {
@@ -9,22 +10,47 @@
     "changeset": "changeset",
     "version": "changeset version",
     "version:snapshot": "changeset version --snapshot",
+    "dev": "pnpm -F @element-plus-lab/playground run dev",
+    "build": "node scripts/clean-dist.js && pnpm exec tsdown && node scripts/rename-full.js",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "typecheck": "pnpm exec vue-vine-tsc --noEmit",
     "docs:dev": "pnpm -F @element-plus-lab/docs run dev",
-    "docs:build": "pnpm -F element-plus-lab run build && pnpm -F @element-plus-lab/docs run build",
+    "docs:build": "pnpm run build && pnpm -F @element-plus-lab/docs run build",
     "docs:preview": "pnpm -F @element-plus-lab/docs run preview",
-    "release": "pnpm -F element-plus-lab run release"
+    "publint": "publint packages/element-plus-lab",
+    "release": "pnpm run build && pnpm publish -C packages/element-plus-lab --access public"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "catalog:lint-format",
+    "@changesets/changelog-github": "catalog:lint-format",
     "@changesets/cli": "catalog:cli",
     "@commitlint/cli": "catalog:lint-format",
-    "@element-plus-lab/commitlint-config": "workspace:*",
+    "@commitlint/config-conventional": "catalog:lint-format",
     "@element-plus-lab/components": "workspace:*",
-    "@element-plus-lab/eslint-config": "workspace:*",
+    "@vitejs/plugin-vue": "catalog:vite",
+    "@vitejs/plugin-vue-jsx": "catalog:vite",
+    "@vue-vine/eslint-config": "catalog:lint-format",
+    "@vue/test-utils": "catalog:vue",
+    "@vue/tsconfig": "catalog:vue",
     "czg": "catalog:lint-format",
     "eslint": "catalog:lint-format",
+    "eslint-plugin-oxlint": "catalog:lint-format",
     "fast-glob": "catalog:cli",
+    "globals": "catalog:lint-format",
+    "happy-dom": "catalog:vitest",
     "lefthook": "catalog:cli",
     "lint-staged": "catalog:lint-format",
-    "oxlint": "catalog:lint-format"
+    "oxlint": "catalog:lint-format",
+    "publint": "catalog:vite",
+    "tsdown": "catalog:vite",
+    "typescript-eslint": "catalog:lint-format",
+    "unplugin-vue-jsx": "catalog:vite",
+    "vite": "catalog:vite",
+    "vitest": "catalog:vitest",
+    "vue": "catalog:vue",
+    "vue-eslint-parser": "catalog:lint-format",
+    "vue-vine": "catalog:vue",
+    "vue-vine-tsc": "catalog:vue"
   }
 }

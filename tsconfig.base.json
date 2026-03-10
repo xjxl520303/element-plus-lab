@@ -1,18 +1,18 @@
 {
   "extends": "@vue/tsconfig/tsconfig.dom.json",
   "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "vue",
     "lib": ["ES2024", "DOM", "DOM.Iterable"],
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
     "types": ["vite/client", "vue-vine/macros"],
     "strict": true,
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "erasableSyntaxOnly": true,
     "noUncheckedSideEffectImports": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "jsxImportSource": "vue"
+    "erasableSyntaxOnly": true
   },
-  "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.vue"]
+  "include": ["**/*.d.ts", "**/*.ts", "**/*.tsx", "**/*.vue"],
+  "exclude": ["node_modules", "dist"]
 }
