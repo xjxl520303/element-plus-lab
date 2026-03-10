@@ -1,38 +1,38 @@
 <script lang="tsx" setup>
-import { useDialog } from 'element-plus-lab';
+import { useDialog } from 'element-plus-lab'
 
-const { openDialog, headerPortalName } = useDialog();
-const { openDialog: openDialog2, contentPortalName } = useDialog();
-const { openDialog: openDialog3 } = useDialog();
-const { openDialog: openDialog4, footerPortalName } = useDialog();
-const { openDialog: openDialog5 } = useDialog();
+const { openDialog, headerPortalName } = useDialog()
+const { openDialog: openDialog2, contentPortalName } = useDialog()
+const { openDialog: openDialog3 } = useDialog()
+const { openDialog: openDialog4, footerPortalName } = useDialog()
+const { openDialog: openDialog5 } = useDialog()
 
 function openWithTitle() {
-  openDialog({ title: '提示', content: '确认删除？' });
+  openDialog({ title: '提示', content: '确认删除？' })
 }
 
 function openWithPortalHeader() {
-  openDialog();
+  openDialog()
 }
 
 function openWithRenderHeader() {
   openDialog({
     renderHeader: () => <div>通过 renderHeader() 函数</div>,
-  });
+  })
 }
 
 function openWithContent() {
-  openDialog2({ content: '确认删除？' });
+  openDialog2({ content: '确认删除？' })
 }
 
 function openWithPortalContent() {
-  openDialog2();
+  openDialog2()
 }
 
 function openWithRenderContent() {
   openDialog2({
     render: () => <div>通过 render() 函数</div>,
-  });
+  })
 }
 
 function openWithActions() {
@@ -42,15 +42,15 @@ function openWithActions() {
     okText: 'Ok',
     actions: ['ok'],
     okHandler: (resolve) => {
-      resolve({ reason: 'ok', data: '这里是关闭传递的参数' });
+      resolve({ reason: 'ok', data: '这里是关闭传递的参数' })
     },
-  });
+  })
 }
 
 function openWithPortalFooter() {
   openDialog4({
     title: '选择托管机构',
-  });
+  })
 }
 
 function openWithRenderFooter() {
@@ -64,14 +64,17 @@ function openWithRenderFooter() {
         </el-button>
       </>
     ),
-  });
+  })
 }
 </script>
+
 <template>
   <p>设置对话框头部内容</p>
-  <hr />
+  <hr>
   <div>
-    <el-button @click="openWithTitle">通过 title 属性</el-button>
+    <el-button @click="openWithTitle">
+      通过 title 属性
+    </el-button>
     <el-button @click="openWithPortalHeader">
       通过 portal-vue 指定头部内容
     </el-button>
@@ -79,23 +82,29 @@ function openWithRenderFooter() {
       通过 renderHeader() 函数
     </el-button>
   </div>
-  <hr />
+  <hr>
 
   <p>设置对话框主体内容</p>
-  <hr />
+  <hr>
   <div>
-    <el-button @click="openWithContent">通过 content 属性</el-button>
+    <el-button @click="openWithContent">
+      通过 content 属性
+    </el-button>
     <el-button @click="openWithPortalContent">
       通过 portal-vue 指定主体内容
     </el-button>
-    <el-button @click="openWithRenderContent"> 通过 render() 函数 </el-button>
+    <el-button @click="openWithRenderContent">
+      通过 render() 函数
+    </el-button>
   </div>
-  <hr />
+  <hr>
 
   <p>设置对话框底部内容</p>
-  <hr />
+  <hr>
   <div>
-    <el-button @click="openWithActions">通过 actions 属性</el-button>
+    <el-button @click="openWithActions">
+      通过 actions 属性
+    </el-button>
     <el-button @click="openWithPortalFooter">
       通过 portal-vue 指定底部内容
     </el-button>
@@ -116,7 +125,7 @@ function openWithRenderFooter() {
     <div>这里的内容来自另一个 portal</div>
   </portal>
 
-  <portal :to="footerPortalName" name="footer" v-slot="{ resolve }">
+  <portal v-slot="{ resolve }" :to="footerPortalName" name="footer">
     <el-button>上一步</el-button>
     <el-button>下一步</el-button>
     <el-button

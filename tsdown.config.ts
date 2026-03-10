@@ -1,12 +1,31 @@
 import { defineConfig } from 'tsdown'
+import VueJsx from 'unplugin-vue-jsx/rolldown'
+
+const pkg = 'packages/element-plus-lab'
+
+/**
+ * 各构建共用的配置。
+ * 注：publint 关闭。因配置文件在仓库根目录，tsdown 会从根目录解析 package.json（private: true）
+ * 并在此执行 pnpm pack，导致 Pack failed。若需检查发布包，可在构建后手动执行：
+ * pnpm pack -C packages/element-plus-lab && npx publint <生成的 tgz>
+ */
+const shared = {
+  plugins: [VueJsx()],
+  checks: { pluginTimings: false as const },
+  publint: false,
+  deps: {
+    skipNodeModulesBundle: true,
+  },
+}
 
 export default defineConfig([
   // dist/es/：ESM、.mjs，供现代打包器 tree-shaking
   {
-    entry: ['index.ts'],
+    ...shared,
+    entry: [`${pkg}/index.ts`],
     format: ['esm'],
     unbundle: true,
-    outDir: 'dist/es',
+    outDir: `${pkg}/dist/es`,
     platform: 'neutral',
     fromVite: true,
     sourcemap: true,
@@ -20,10 +39,11 @@ export default defineConfig([
   },
   // dist/lib/：CJS、.js，供 Node 或旧版打包器
   {
-    entry: ['index.ts'],
+    ...shared,
+    entry: [`${pkg}/index.ts`],
     format: ['cjs'],
     unbundle: true,
-    outDir: 'dist/lib',
+    outDir: `${pkg}/dist/lib`,
     platform: 'neutral',
     fromVite: true,
     sourcemap: true,
@@ -31,16 +51,17 @@ export default defineConfig([
     clean: false,
     dts: false,
     outputOptions(options) {
-      ;(options as Record<string, unknown>).entryFileNames = '[name].js'
-      ;(options as Record<string, unknown>).chunkFileNames = '[name].js'
+      ;(options as Record<string, unknown>).entryFileNames = '[name].cjs'
+      ;(options as Record<string, unknown>).chunkFileNames = '[name].cjs'
     },
   },
-  // dist/index.full.js：单文件全量、未压缩（构建后重命名 .iife.js → .js）
+  // dist/index.full.cjs：单文件全量、未压缩（构建后重命名 .iife.js → .cjs）
   {
-    entry: { 'index.full': 'index.ts' },
+    ...shared,
+    entry: { 'index.full': `${pkg}/index.ts` },
     format: ['iife'],
     unbundle: false,
-    outDir: 'dist',
+    outDir: `${pkg}/dist`,
     platform: 'browser',
     fromVite: true,
     sourcemap: true,
@@ -53,10 +74,11 @@ export default defineConfig([
   },
   // dist/index.full.min.js：单文件全量、已压缩
   {
-    entry: { 'index.full.min': 'index.ts' },
+    ...shared,
+    entry: { 'index.full.min': `${pkg}/index.ts` },
     format: ['iife'],
     unbundle: false,
-    outDir: 'dist',
+    outDir: `${pkg}/dist`,
     platform: 'browser',
     fromVite: true,
     sourcemap: false,

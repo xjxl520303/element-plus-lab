@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDialog } from 'element-plus-lab'
-import HelloWorld from '@/components/hello-world.vine'
 import { PortalTarget } from 'portal-vue'
+import HelloWorld from '@/components/hello-world.vine'
 
 const dialog = useDialog()
 
@@ -13,10 +13,13 @@ async function openTestDialog() {
     okText: '确定',
     cancelText: '取消',
   })
-  console.log('对话框关闭:', result)
+  console.warn('对话框关闭:', result)
   if (result?.reason === 'ok') {
+    // eslint-disable-next-line no-alert -- demo feedback
     alert('你点击了确定')
-  } else if (result?.reason === 'cancel') {
+  }
+  else if (result?.reason === 'cancel') {
+    // eslint-disable-next-line no-alert -- demo feedback
     alert('你点击了取消')
   }
 }

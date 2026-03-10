@@ -15,7 +15,6 @@
     "vue": "catalog:vue"
   },
   "devDependencies": {
-    "@element-plus-lab/tsconfig": "workspace:*",
     "@tailwindcss/vite": "catalog:vite",
     "@types/node": "catalog:cli",
     "@vitejs/plugin-vue": "catalog:vite",

@@ -16,7 +16,7 @@ function getPackages(packagePath) {
 
 const scopes = [
   ...getPackages('packages'),
-  ...getPackages('internal'),
+  // ...getPackages('internal'),
   'docs',
   'changeset',
   'play',

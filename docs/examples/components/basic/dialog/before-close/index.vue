@@ -1,13 +1,14 @@
 <script lang="tsx" setup>
-import { ref } from 'vue';
+import type { EllDialogResult } from 'element-plus-lab'
 
-import { useDialog, type EllDialogResult } from 'element-plus-lab';
-import { ElMessage } from 'element-plus';
+import { ElMessage } from 'element-plus'
+import { useDialog } from 'element-plus-lab'
+import { ref } from 'vue'
 
-const { openDialog } = useDialog();
-const { openDialog: openDialog2 } = useDialog();
+const { openDialog } = useDialog()
+const { openDialog: openDialog2 } = useDialog()
 
-const count = ref(0);
+const count = ref(0)
 
 async function open() {
   try {
@@ -16,21 +17,26 @@ async function open() {
       content: '确认关闭？',
       render: () => (
         <div>
-          <div class="mb-1">数量超过 3 会阻止关闭：{count.value}</div>
+          <div class="mb-1">
+            数量超过 3 会阻止关闭：
+            {count.value}
+          </div>
           <el-button onClick={() => count.value++}>增加</el-button>
           <el-button onClick={() => count.value--}>减少</el-button>
         </div>
       ),
       beforeClose: async (resolve) => {
         if (count.value >= 3) {
-          ElMessage.warning('阻止关闭，最多只能增加3次');
-          return false;
-        } else {
-          resolve({ reason: 'ok' });
+          ElMessage.warning('阻止关闭，最多只能增加3次')
+          return false
+        }
+        else {
+          resolve({ reason: 'ok' })
         }
       },
-    });
-  } catch {
+    })
+  }
+  catch {
     // 忽略错误
   }
 }
@@ -46,26 +52,34 @@ async function open2() {
             title: '友情提醒',
             width: 200,
             content: '真的不考虑一下吗？',
-          });
-        } catch (error) {
-          const result = error as unknown as EllDialogResult;
+          })
+        }
+        catch (error) {
+          const result = error as unknown as EllDialogResult
           if (result.reason === 'ok') {
-            resolve({ reason: 'ok' });
-          } else {
-            reject({ reason: 'cancel' });
+            resolve({ reason: 'ok' })
+          }
+          else {
+            reject({ reason: 'cancel' })
           }
         }
       },
-    });
-    ElMessage.success('删除成功！');
-  } catch {
+    })
+    ElMessage.success('删除成功！')
+  }
+  catch {
     // 忽略错误
   }
 }
 </script>
+
 <template>
   <div>
-    <el-button @click="open">打开（支持动态判断）</el-button>
-    <el-button @click="open2">打开（支持嵌套 beforeClose 拦截）</el-button>
+    <el-button @click="open">
+      打开（支持动态判断）
+    </el-button>
+    <el-button @click="open2">
+      打开（支持嵌套 beforeClose 拦截）
+    </el-button>
   </div>
 </template>

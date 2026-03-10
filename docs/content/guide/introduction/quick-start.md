@@ -37,7 +37,7 @@ pnpm add element-plus-lab
 
 2. 在需要使用对话框的地方引入 `useDialog` 钩子函数，并调用 `openDialog()` 方法打开对话框。
 
-```ts twoslash
+```ts
 import { useDialog, type EllDialogResult } from 'element-plus-lab'
 
 const { openDialog } = useDialog()

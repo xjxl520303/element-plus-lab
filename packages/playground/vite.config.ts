@@ -32,6 +32,8 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      // 本地开发时直接指向源码，避免依赖 dist/es 中打包后的深层依赖解析
+      'element-plus-lab': fileURLToPath(new URL('../element-plus-lab/index.ts', import.meta.url)),
     },
   },
 })

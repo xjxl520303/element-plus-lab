@@ -14,10 +14,5 @@
     "portal-vue": "catalog:vue",
     "ulid": "catalog:vue",
     "vue": "catalog:vue"
-  },
-  "devDependencies": {
-    "@element-plus-lab/tsconfig": "workspace:*",
-    "vite": "catalog:vite",
-    "vue-vine": "catalog:vue"
   }
 }

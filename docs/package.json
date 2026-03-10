@@ -17,12 +17,10 @@
     "vue": "catalog:vue"
   },
   "devDependencies": {
-    "@element-plus-lab/tsconfig": "workspace:*",
     "@iconify/json": "catalog:vite",
     "@nolebase/vitepress-plugin-enhanced-readabilities": "catalog:docs",
     "@nolebase/vitepress-plugin-git-changelog": "catalog:docs",
     "@nolebase/vitepress-plugin-git-changelog/client": "catalog:docs",
-    "@shikijs/vitepress-twoslash": "catalog:docs",
     "@tailwindcss/vite": "catalog:vite",
     "@vitejs/plugin-vue-jsx": "catalog:vite",
     "@vitepress-demo-preview/component": "catalog:docs",

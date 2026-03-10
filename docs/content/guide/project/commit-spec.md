@@ -1,5 +1,6 @@
 ---
 title: 分支（拉取/合并）和发版规范
+order: 1
 ---
 
 # 分支（拉取/合并）和发版规范
@@ -120,11 +121,19 @@ git tag vx.y.z   # 如果尚未打 tag
 git push origin vx.y.z
 ```
 
-3. 发布 NPM 包（示例，以子包 `element-plus-lab` 为例）：
+3. **构建与发布前检查**（在仓库根目录执行）：
 
 ```bash
-cd packages/element-plus-lab
-pnpm publish --access public
+pnpm run build          # 构建 element-plus-lab 产物（dist/es、dist/lib、dist/*.cjs）
+pnpm run publint        # 对 packages/element-plus-lab 跑 publint，确保 exports/类型等无 Error
+```
+
+若 `publint` 报错，需先根据提示修正 `packages/element-plus-lab/package.json` 或构建产物后再发布。通过后再执行发布命令。
+
+5. 发布 NPM 包（在仓库根目录执行即可，无需 cd 到子包）：
+
+```bash
+pnpm publish -C packages/element-plus-lab --access public
 ```
 
 ::: info
@@ -138,3 +147,7 @@ pnpm publish --access public
 - **开发阶段**：功能分支 + MR 合入 `main`，并在功能分支上用 `pnpm changeset` 记录可发布变更。
 - **发版阶段**：从 `main` 创建 `release/vx.y.z` 分支 → 在该分支上执行 `pnpm version` 生成版本 & changelog → 提交 Release MR → 合入 `main`。
 - **发布阶段**：在 Release MR 合并后，推送 tag 并执行 `pnpm publish` 发布到 NPM（推荐由 CI 完成）。
+
+---
+
+*本文部分内容由 AI 辅助创作，仅供参考，请以官方文档与项目实践为准。*
