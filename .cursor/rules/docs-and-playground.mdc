@@ -1,0 +1,24 @@
+---
+description: 文档站与 playground 示例的协作约定
+globs: |
+  docs/**
+  packages/playground/**
+alwaysApply: false
+---
+
+# 文档内容
+
+- 文档中的代码示例必须与当前实现保持一致，优先使用推荐的 API 写法（例如 `import type EllDialogResult`）。
+- 对外语义或使用方式发生变化时，应优先更新文档指南，再更新示例和 README，最后补充 changeset。
+- 文档说明和示例注释统一使用中文，必要的类型、接口名保持英文原样。
+
+# 示例与 playground
+
+- playground 仅作为演示与联调环境，不应承载通用业务逻辑；可复用逻辑应沉淀到组件包或工具函数中。
+- 示例中如需规避 eslint/oxlint 规则（例如故意使用 `alert`），应使用最小粒度的 `eslint-disable` 并附简短原因。
+
+# 质量检查
+
+- 在合并前，应确保 `pnpm docs:build` 能成功通过，并尽量避免对文档构建链路引入不必要的复杂插件。
+- 文档与示例相关改动通常需要单独的 `docs(...)` 提交和对应 changeset，以便在 CHANGELOG 中清晰呈现。
+

@@ -81,7 +81,6 @@
   "devDependencies": {
     "@types/node": "catalog:cli",
     "portal-vue": "catalog:vue",
-    "ulid": "catalog:vue",
     "vue": "catalog:vue"
   }
 }

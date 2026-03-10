@@ -1,0 +1,34 @@
+---
+description: 组件包（packages/components）编码与测试规范
+globs: packages/components/**
+alwaysApply: false
+---
+
+# 组件与类型设计
+
+- 所有导出的组件、hooks、工具应从各自包的入口文件集中导出，避免用户深层路径导入。
+- 公共类型统一从 `./types` 等集中出口导出，命名使用 PascalCase（如 `EllDialogProps`, `EllDialogResult`）。
+- 禁止在组件源码中直接依赖文档或 playground 代码，保持纯粹的可复用逻辑。
+
+# 测试约定
+
+- 每个对外暴露的组件或复杂 hook **必须** 有对应单元测试文件，路径约定为：`__tests__/<name>.test.ts` 或 `.test.tsx`。
+- e2e 测试为可选项，仅在交互路径复杂或涉及多页面/多组件联动时根据实际需要添加。
+- 优先使用 Vitest 和 Vue Test Utils，对关键行为（交互、事件、Promise 结果）做断言，而非仅快照。
+
+# 主题与样式
+
+- 组件当前只考虑主题（亮色 / 暗色）而不做国际化处理，确保在这两种主题下样式和交互一致可靠。
+- 颜色统一使用 Element Plus 暴露的 CSS 变量或设计系统，不在组件内部硬编码随意颜色值。
+- 组件样式一律使用 Tailwind CSS 原子类来组织；如需额外类名合并，使用 `tailwind-merge` 及其推荐搭配库，确保外部传入的类名可以覆盖内部默认样式。
+
+# 组合模式
+
+- 推荐使用 `portal-vue` 在合适的场景下减少 props/emit 链条，提升组件组合灵活性，可参考 `useDialog` 的实现方式。
+- 当单个组件过于复杂时，可以考虑拆成多个子组件，并使用 `vue-vine` 在一个 `.vine.ts` 或单文件中实现复用和组合，避免过深的嵌套层级。
+
+# 代码风格
+
+- 严格通过 `pnpm lint`；如遇规则冲突优先调整实现，其次再微调规则。
+- 仅在确有必要且理由充分时使用 `eslint-disable`，并限制在最小范围（单行或单段）。
+
