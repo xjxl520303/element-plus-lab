@@ -1,0 +1,24 @@
+---
+description: 发布包 element-plus-lab 的导出与打包规范
+globs: packages/element-plus-lab/**
+alwaysApply: false
+---
+
+# 包职责与导出
+
+- `element-plus-lab` 作为对外发布包，只负责聚合导出组件与 hooks，不直接存放复杂业务实现。
+- 所有对外 API 必须从包入口导出，并在类型层面保持稳定，避免随意破坏已有签名。
+- 新增导出时，应同步更新 README、文档站以及相关示例，确保用户有清晰的用法指引。
+ - 与 Element Plus 类型不冲突的场景下，本项目自定义的公共类型命名统一采用 `Ell` 前缀（如 `EllDialogResult`），以便与上游类型区分。
+
+# 打包与产物结构
+
+- 使用根目录的 `tsdown.config.ts` 构建产物，保持 `dist/es` 和 `dist/lib` 结构稳定。
+- 禁止将 `node_modules/.pnpm`、`__virtual` 等内部依赖路径打包进发布产物，如出现应优先通过 deps/external 配置排除。
+- `package.json` 中的 `exports`、`types`、`main`、`module` 等字段必须与实际产物一致，并通过 `pnpm publint` 保证无错误。
+
+# 依赖管理
+
+- 运行时真实依赖放在 `dependencies` 或 `peerDependencies` 中；开发和构建工具放在 `devDependencies`。
+- 调整依赖关系（新增/删除/迁移）时，务必更新对应的 changeset，说明对用户可能产生的影响。
+

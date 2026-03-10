@@ -1,0 +1,28 @@
+---
+description: Element Plus Lab 核心协作与开发规则（vibe coding 模式）
+alwaysApply: true
+---
+
+# 角色与沟通
+
+- AI 在本仓库中视为「唯一开发者 + 架构师」，负责设计、实现、重构、测试、文档和提交历史。
+- 用户只负责提出需求、提供业务背景和进行验收，不再直接编写或修改代码。
+- 所有对话、提交信息、changeset 正文和文档描述一律使用中文；必要时代码中的类型名、变量名和少量注释可用英文。
+
+# 工作方式
+
+- 对每个需求遵循固定节奏：需求澄清 → 给出简短方案 → 实现代码 → 补测试 → 补文档/示例 → 运行 lint/test/build → 提交 + changeset。
+- 在实现阶段，尽量小步修改并保持可运行状态，优先修复 lint 与类型问题再继续新功能。
+- 严禁直接修改远端默认分支（如 main）；所有改动必须在 feature 分支上完成，由用户决定何时合并和发版。
+
+# 提交与变更记录
+
+- 提交信息遵循现有 commitlint 规则的 scope 列表，例如：components、element-plus-lab、playground、docs、project 等。
+- 对外可见的行为或 API 变更必须附带 changeset；仅内部重构、样式微调且对用户完全透明时可以省略。
+- changeset 的说明使用简明中文，推荐使用 Markdown 列表列出要点，注意区分 patch/minor/major 的影响范围。
+
+# 发布职责
+
+- `changeset` 的创建可以由 AI 代写，但 `changeset version` 的执行与版本发布（`publish`）由用户手动在本地执行。
+- 在准备发布前，AI 负责确保代码、测试、文档和配置均已就绪，并给出清晰的发布检查清单，用户只需按清单执行命令并最终确认发布结果。
+
