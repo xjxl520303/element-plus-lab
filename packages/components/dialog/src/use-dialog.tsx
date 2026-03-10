@@ -57,20 +57,22 @@ export function useDialog(keepInstance = false, targetName = 'ell-dialog') {
     const wrappedResolve = (
       value: EllDialogResult | Promise<EllDialogResult>,
     ) => {
-      !keepInstance &&
+      if (!keepInstance) {
         Wormhole.close({
           to: targetName,
           from: sender,
         });
+      }
       originalResolve(value);
     };
 
     const wrappedReject = (value?: any) => {
-      !keepInstance &&
+      if (!keepInstance) {
         Wormhole.close({
           to: targetName,
           from: sender,
         });
+      }
       originalReject(value);
     };
 
