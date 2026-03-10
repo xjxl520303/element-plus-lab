@@ -1,16 +1,17 @@
 <script lang="ts" setup>
-import { useDialog, type EllDialogResult } from 'element-plus-lab';
-import { ElButton, ElMessage } from 'element-plus';
+import type { EllDialogResult } from 'element-plus-lab'
+import { ElButton, ElMessage } from 'element-plus'
+import { useDialog } from 'element-plus-lab'
 
-import Count from './count.vue';
+import Count from './count.vue'
 
 // 不保持实例（默认）：每次关闭对话框时，ElDialog 组件会被销毁
-const { openDialog: openWithDestroy, contentPortalName: contentPortalName1 } =
-  useDialog(false);
+const { openDialog: openWithDestroy, contentPortalName: contentPortalName1 }
+  = useDialog(false)
 
 // 保持实例：ElDialog 组件不会被销毁，只是隐藏，再次打开时复用同一个实例
-const { openDialog: openWithKeep, contentPortalName: contentPortalName2 } =
-  useDialog(true, 'bus-dialog-keep');
+const { openDialog: openWithKeep, contentPortalName: contentPortalName2 }
+  = useDialog(true, 'bus-dialog-keep')
 
 // 打开会销毁实例的对话框
 async function handleOpenWithDestroy() {
@@ -18,14 +19,15 @@ async function handleOpenWithDestroy() {
     const result = await openWithDestroy({
       title: '编辑用户（销毁实例）',
       width: 500,
-    });
+    })
     if (result?.reason === 'ok') {
-      ElMessage.success('保存成功！');
+      ElMessage.success('保存成功！')
     }
-  } catch (error) {
-    const result = error as unknown as EllDialogResult;
+  }
+  catch (error) {
+    const result = error as unknown as EllDialogResult
     if (result?.reason === 'cancel') {
-      ElMessage.info('已取消');
+      ElMessage.info('已取消')
     }
   }
 }
@@ -36,22 +38,28 @@ async function handleOpenWithKeep() {
     const result = await openWithKeep({
       title: '编辑用户（保持实例）',
       width: 500,
-    });
+    })
     if (result?.reason === 'ok') {
-      ElMessage.success('保存成功！');
+      ElMessage.success('保存成功！')
     }
-  } catch (error) {
-    const result = error as unknown as EllDialogResult;
+  }
+  catch (error) {
+    const result = error as unknown as EllDialogResult
     if (result?.reason === 'cancel') {
-      ElMessage.info('已取消');
+      ElMessage.info('已取消')
     }
   }
 }
 </script>
+
 <template>
   <div style="display: flex; gap: 12px">
-    <ElButton @click="handleOpenWithDestroy"> 打开对话框（销毁实例） </ElButton>
-    <ElButton @click="handleOpenWithKeep"> 打开对话框（保持实例） </ElButton>
+    <ElButton @click="handleOpenWithDestroy">
+      打开对话框（销毁实例）
+    </ElButton>
+    <ElButton @click="handleOpenWithKeep">
+      打开对话框（保持实例）
+    </ElButton>
   </div>
 
   <portal-target name="bus-dialog-keep" multiple />

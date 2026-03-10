@@ -3,14 +3,12 @@ import { ElementPlusContainer } from '@vitepress-demo-preview/component';
 import { defineClientComponentConfig } from '@vitepress-demo-preview/core';
 import { NolebaseGitChangelogPlugin } from '@nolebase/vitepress-plugin-git-changelog/client';
 import { NolebaseEnhancedReadabilitiesPlugin } from '@nolebase/vitepress-plugin-enhanced-readabilities/client';
-import TwoslashFloatingVue from '@shikijs/vitepress-twoslash/client';
 import PortalVue from 'portal-vue';
 import { defineComponent, h } from 'vue';
 
 import '@vitepress-demo-preview/component/dist/style.css';
 import '@nolebase/vitepress-plugin-git-changelog/client/style.css';
 import '@nolebase/vitepress-plugin-enhanced-readabilities/client/style.css';
-import '@shikijs/vitepress-twoslash/style.css';
 import './styles/global.css';
 
 import SiteLayout from './components/site-layout.vue';
@@ -59,7 +57,6 @@ export default {
     };
     app.use(NolebaseGitChangelogPlugin);
     app.use(NolebaseEnhancedReadabilitiesPlugin);
-    app.use(TwoslashFloatingVue);
   },
   extends: DefaultTheme,
   Layout: SiteLayout,

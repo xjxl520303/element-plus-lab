@@ -7,7 +7,6 @@ import {
   GitChangelog,
   GitChangelogMarkdownSection,
 } from '@nolebase/vitepress-plugin-git-changelog/vite';
-import { transformerTwoslash } from '@shikijs/vitepress-twoslash';
 import { VineVitePlugin } from 'vue-vine/vite';
 import tailwindcss from '@tailwindcss/vite';
 import AutoImport from 'unplugin-auto-import/vite'
@@ -94,7 +93,6 @@ const vitePressOptions: UserConfig = {
       md.use(componentPreview, { alias });
       md.use(containerPreview, { alias });
     },
-    codeTransformers: [transformerTwoslash()],
     // Explicitly load these languages for types highlighting
     languages: ['js', 'jsx', 'ts', 'tsx', 'vue'],
   },

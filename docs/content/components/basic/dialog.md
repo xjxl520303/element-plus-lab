@@ -25,7 +25,7 @@ title: useDialog 对话框封装
 
 ::: code-group
 
-```ts twoslash [使用 async/await 结合 try...catch]
+```ts [使用 async/await 结合 try...catch]
 import { ElMessage } from 'element-plus';
 import { useDialog } from 'element-plus-lab';
 
@@ -42,7 +42,7 @@ async function open() {
 }
 ```
 
-```ts twoslash [使用 Promise]
+```ts [使用 Promise]
 import { ElMessage } from 'element-plus';
 import { useDialog } from 'element-plus-lab';
 
@@ -356,7 +356,7 @@ const res = openDialog({
 
 ::: details 显示类型声明
 
-```ts twoslash
+```ts
 import type { DialogProps } from 'element-plus';
 import type { JSX } from 'vue/jsx-runtime';
 
