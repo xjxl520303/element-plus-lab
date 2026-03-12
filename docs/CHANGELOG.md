@@ -1,5 +1,13 @@
 # @element-plus-lab/docs
 
+## 0.2.1
+
+### Patch Changes
+
+- [#7](https://github.com/xjxl520303/element-plus-lab/pull/7) [`bae95da`](https://github.com/xjxl520303/element-plus-lab/commit/bae95dabacf971d0b868fbb3bf02fb20bcc87804) Thanks [@xjxl520303](https://github.com/xjxl520303)!
+  - 补充 `useDialog` 对话框封装文档，完善基础用法与 API 说明
+  - 新增《在单元测试中 mock portal-vue》指南，沉淀有状态 Wormhole/PortalTarget mock 实践
+
 ## 0.2.0
 
 ### Minor Changes

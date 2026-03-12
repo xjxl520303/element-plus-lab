@@ -51,9 +51,8 @@ export const PortalTarget = defineComponent({
     },
   },
   setup(props) {
-    const store = ensureTarget(props.name)
-
     return () => {
+      const store = ensureTarget(props.name)
       const items = store.value || []
       if (!items.length) return null
 
