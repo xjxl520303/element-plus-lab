@@ -2,8 +2,6 @@ import { mount } from '@vue/test-utils'
 import { defineComponent, nextTick } from 'vue'
 import { describe, expect, it, vi, beforeEach, afterEach } from 'vitest'
 
-import { useDialog } from '../src/use-dialog'
-
 vi.mock('ulid', () => ({
   ulid: () => 'test-sender',
 }))
@@ -12,6 +10,7 @@ vi.mock('portal-vue')
 
 import { PortalTarget, Wormhole } from 'portal-vue'
 import { ElButton, ElDialog } from 'element-plus'
+import { useDialog } from '../src/use-dialog'
 
 describe('useDialog - 基础返回值', () => {
   it('返回的 portal 名称基于 ulid 生成，前缀为 sender+', () => {
