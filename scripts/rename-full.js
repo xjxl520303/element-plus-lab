@@ -4,6 +4,8 @@ import { fileURLToPath } from 'node:url'
 
 const rootDir = join(dirname(fileURLToPath(import.meta.url)), '..')
 const dist = join(rootDir, 'packages', 'element-plus-lab', 'dist')
+const drawerCssSrc = join(rootDir, 'packages', 'components', 'drawer', 'src', 'close-placement.css')
+const drawerCssDest = join(dist, 'drawer-close-placement.css')
 
 // IIFE 重命名为 index.full.cjs / index.full.min.cjs（.cjs 满足 publint 对 type:module 包中非 ESM 产物的要求）
 if (existsSync(join(dist, 'index.full.iife.js'))) {
@@ -37,3 +39,8 @@ const esIndexDts = join(dist, 'es', 'index.d.ts')
 const esIndexDcts = join(dist, 'es', 'index.d.cts')
 if (existsSync(esIndexDts))
   copyFileSync(esIndexDts, esIndexDcts)
+
+// 复制 useDrawer 关闭按钮位置样式，供按需引入
+if (existsSync(drawerCssSrc)) {
+  copyFileSync(drawerCssSrc, drawerCssDest)
+}

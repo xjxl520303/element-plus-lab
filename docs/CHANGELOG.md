@@ -1,5 +1,29 @@
 # @element-plus-lab/docs
 
+## 0.3.0
+
+### Minor Changes
+
+- ## element-plus-lab
+
+  - **新增 `useDrawer` 抽屉封装**：基于 `createTemplatePromise` 与 portal-vue，提供 Promise 化 API。
+  - **展示变体 `variant`**：`default`（标题+内容+底部按钮）、`blank`（仅内容、遮罩可关）、`simple`（标题+关闭、仅关闭按钮可关）。
+  - **头部与操作配置**：`headerConfig`（title、closeable、closePlacement）、`actionConfig`（actions、okText/cancelText、placement、okHandler/cancelHandler）。
+  - **beforeClose / keepInstance**：关闭前拦截与保留实例不销毁，行为与 useDialog 对齐。
+  - **共享类型**：`EllOverlayResult`、`EllOverlayCloseReason` 从 `@element-plus-lab/utils` 导出；抽屉关闭原因与结果类型与对话框统一。
+  - **样式**：`headerConfig.closePlacement === 'left'` 时通过类名 `ell-drawer-close-left` 与可选样式文件 `element-plus-lab/drawer-close-placement.css` 控制关闭按钮在左侧。
+
+  ## docs
+
+  - **useDrawer 文档**：基础用法、variant、设置内容、beforeClose、keepInstance、关闭/操作按钮位置、API 与类型说明。
+  - **示例**：基础、variant、set-content、before-close、keep-instance、header-actions-layout。
+  - **文档修正**：设置头部示例解构修正（三个 useDrawer 调用）；类型说明与 types 一致。
+
+### Patch Changes
+
+- Updated dependencies []:
+  - element-plus-lab@0.2.0
+
 ## 0.2.1
 
 ### Patch Changes

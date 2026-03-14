@@ -33,11 +33,11 @@ const { openDialog } = useDialog();
 
 async function open() {
   try {
-    await openDialog({ content: '确认删除？' });
-    ElMessage.success('删除成功！');
+    await openDialog({ content: '确定要执行此操作吗？' });
+    ElMessage.success('已确认');
   } catch (error) {
     console.error(error);
-    ElMessage.info('取消删除');
+    ElMessage.info('已取消');
   }
 }
 ```
@@ -49,13 +49,13 @@ import { useDialog } from 'element-plus-lab';
 const { openDialog } = useDialog();
 
 function open() {
-  openDialog({ content: '确认删除？' })
+  openDialog({ content: '确定要执行此操作吗？' })
     .then(() => {
-      ElMessage.success('删除成功！');
+      ElMessage.success('已确认');
     })
     .catch((error) => {
       console.error(error);
-      ElMessage.info('取消删除');
+      ElMessage.info('已取消');
     });
 }
 ```
@@ -328,12 +328,12 @@ const res = openDialog({
 | actions | 对话框底部按钮配置 | `Array<'cancel' \| 'ok'>` | `['cancel', 'ok']` |
 | okText | 确定按钮文本 | `string` | `'确定'` |
 | cancelText | 取消按钮文本 | `string` | `'取消'` |
-| renderHeader | 对话框头部渲染器 | `(resolve: (v: EllDialogResult \| Promise<EllDialogResult>) => void, reject: (value?: any) => void ) => JSX.Element \| string \| VNodeChild` | - |
-| render | 对话框主体内容渲染器 | `(resolve: (v: EllDialogResult \| Promise<EllDialogResult>) => void, reject: (value?: any) => void ) => JSX.Element \| string \| VNodeChild` | - |
-| renderFooter | 对话框底部渲染器 | `(resolve: (v: EllDialogResult \| Promise<EllDialogResult>) => void, reject: (value?: any) => void ) => JSX.Element \| string \| VNodeChild` | - |
-| beforeClose | 对话框关闭时的拦截函数 | `(resolve: (v: EllDialogResult) => void, reject: (v: EllDialogResult) => void) => boolean \| Promise<boolean \| undefined> \| Promise<void> \| undefined` | - |
-| okHandler | 确认按钮事件处理器 | `(resolve: (v: EllDialogResult) => void, reject: (v: EllDialogResult) => void) => Promise<void> \| void` | - |
-| cancelHandler | 取消按钮事件处理器 | `(resolve: (v: EllDialogResult) => void, reject: (v: EllDialogResult) => void) => Promise<void> \| void` | - |
+| renderHeader | 对话框头部渲染器 | `(resolve: (v: EllOverlayResult \| Promise<EllOverlayResult>) => void, reject: (value?: any) => void ) => JSX.Element \| string \| VNodeChild` | - |
+| render | 对话框主体内容渲染器 | `(resolve: (v: EllOverlayResult \| Promise<EllOverlayResult>) => void, reject: (value?: any) => void ) => JSX.Element \| string \| VNodeChild` | - |
+| renderFooter | 对话框底部渲染器 | `(resolve: (v: EllOverlayResult \| Promise<EllOverlayResult>) => void, reject: (value?: any) => void ) => JSX.Element \| string \| VNodeChild` | - |
+| beforeClose | 对话框关闭时的拦截函数 | `(resolve: (v: EllOverlayResult) => void, reject: (v: EllOverlayResult) => void) => boolean \| Promise<boolean \| undefined> \| Promise<void> \| undefined` | - |
+| okHandler | 确认按钮事件处理器 | `(resolve: (v: EllOverlayResult) => void, reject: (v: EllOverlayResult) => void) => Promise<void> \| void` | - |
+| cancelHandler | 取消按钮事件处理器 | `(resolve: (v: EllOverlayResult) => void, reject: (v: EllOverlayResult) => void) => Promise<void> \| void` | - |
 
 ### Portal
 
@@ -436,7 +436,7 @@ export interface EllDialogProps {
    * @returns 对话框头部内容
    */
   renderHeader?: (
-    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
+    resolve: (v: EllOverlayResult | Promise<EllOverlayResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -451,7 +451,7 @@ export interface EllDialogProps {
    * @returns 对话框主体内容
    */
   render?: (
-    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
+    resolve: (v: EllOverlayResult | Promise<EllOverlayResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -466,7 +466,7 @@ export interface EllDialogProps {
    * @returns 对话框底部内容
    */
   renderFooter?: (
-    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
+    resolve: (v: EllOverlayResult | Promise<EllOverlayResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -478,8 +478,8 @@ export interface EllDialogProps {
    * @returns 返回 `false` 阻止关闭，返回 `true`、`undefined` 或 `Promise<void>` 允许关闭。也可以通过 `resolve`/`reject` 手动控制关闭
    */
   beforeClose?: (
-    resolve: (v: EllDialogResult) => void,
-    reject: (v: EllDialogResult) => void,
+    resolve: (v: EllOverlayResult) => void,
+    reject: (v: EllOverlayResult) => void,
   ) => boolean | Promise<boolean | undefined> | Promise<void> | undefined;
 
   /**
@@ -489,8 +489,8 @@ export interface EllDialogProps {
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    */
   okHandler?: (
-    resolve: (v: EllDialogResult) => void,
-    reject: (v: EllDialogResult) => void,
+    resolve: (v: EllOverlayResult) => void,
+    reject: (v: EllOverlayResult) => void,
   ) => Promise<void> | void;
 
   /**
@@ -500,8 +500,8 @@ export interface EllDialogProps {
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    */
   cancelHandler?: (
-    resolve: (v: EllDialogResult) => void,
-    reject: (v: EllDialogResult) => void,
+    resolve: (v: EllOverlayResult) => void,
+    reject: (v: EllOverlayResult) => void,
   ) => Promise<void> | void;
 }
 
@@ -513,17 +513,7 @@ export interface EllDialogProps {
  * - `data`：对话框关闭时传递的参数
  * - `reason`：关闭原因
  */
-export interface EllDialogResult {
-  /**
-   * 对话框关闭时传递的参数
-   */
-  data?: any;
-
-  /**
-   * 关闭原因
-   */
-  reason: EllDialogCloseReason;
-}
+export interface EllDialogResult extends EllOverlayResult {}
 ```
 
 :::

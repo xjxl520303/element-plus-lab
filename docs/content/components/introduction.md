@@ -14,7 +14,7 @@
 在 Element Plus 提供的组件基础上进行二次封装并作为后续业务组件的基础组件。
 
 - [x] `useDialog` 对话框封装 <sup>0.1.0</sup>
-- [ ] `useDrawer` 抽屉封装
+- [x] `useDrawer` 抽屉封装 <sup>0.1.0+</sup>
 - [ ] `useFormDialog` 表单对话框封装
 - [ ] `useRequestMask` 请求遮罩封装
 - [ ] `<el-simple-steps>` 轻量级步骤条

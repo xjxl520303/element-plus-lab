@@ -28,6 +28,7 @@
     "@commitlint/cli": "catalog:lint-format",
     "@commitlint/config-conventional": "catalog:lint-format",
     "@element-plus-lab/components": "workspace:*",
+    "@element-plus-lab/utils": "workspace:*",
     "@vitejs/plugin-vue": "catalog:vite",
     "@vitejs/plugin-vue-jsx": "catalog:vite",
     "@vue-vine/eslint-config": "catalog:lint-format",

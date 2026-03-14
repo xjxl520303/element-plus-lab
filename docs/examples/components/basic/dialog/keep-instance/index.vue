@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { EllDialogResult } from 'element-plus-lab'
+import type { EllOverlayResult } from 'element-plus-lab'
 import { ElButton, ElMessage } from 'element-plus'
 import { useDialog } from 'element-plus-lab'
 
@@ -25,7 +25,7 @@ async function handleOpenWithDestroy() {
     }
   }
   catch (error) {
-    const result = error as unknown as EllDialogResult
+    const result = error as unknown as EllOverlayResult
     if (result?.reason === 'cancel') {
       ElMessage.info('已取消')
     }
@@ -44,7 +44,7 @@ async function handleOpenWithKeep() {
     }
   }
   catch (error) {
-    const result = error as unknown as EllDialogResult
+    const result = error as unknown as EllOverlayResult
     if (result?.reason === 'cancel') {
       ElMessage.info('已取消')
     }

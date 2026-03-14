@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import { useDialog } from 'element-plus-lab'
+import { useDialog, useDrawer } from 'element-plus-lab'
 import { PortalTarget } from 'portal-vue'
 import HelloWorld from '@/components/hello-world.vine'
 
 const dialog = useDialog()
+const drawer = useDrawer()
 
 async function openTestDialog() {
   const result = await dialog.openDialog({
@@ -23,6 +24,17 @@ async function openTestDialog() {
     alert('你点击了取消')
   }
 }
+
+async function openTestDrawer() {
+  const result = await drawer.openDrawer({
+    title: '测试抽屉',
+    content: '这是从 element-plus-lab 引入的 useDrawer 打开的抽屉。',
+    // actions: ['cancel', 'ok'],
+    // okText: '确定',
+    // cancelText: '取消',
+  })
+  console.warn('抽屉关闭:', result)
+}
 </script>
 
 <template>
@@ -38,7 +50,7 @@ async function openTestDialog() {
   <h1 class="text-3xl font-bold underline">
     Hello world!
   </h1>
-  <!-- portal-vue 目标，供 useBusDialog 渲染对话框 -->
+  <!-- portal-vue 目标，供 useDialog 渲染对话框 -->
   <PortalTarget name="ell-dialog" />
   <button
     type="button"
@@ -46,6 +58,15 @@ async function openTestDialog() {
     @click="openTestDialog"
   >
     打开对话框
+  </button>
+  <!-- portal-vue 目标，供 useDrawer 渲染抽屉 -->
+  <PortalTarget name="ell-drawer" />
+  <button
+    type="button"
+    class="mt-4 ms-4 rounded bg-emerald-500 px-4 py-2 text-white hover:bg-emerald-600"
+    @click="openTestDrawer"
+  >
+    打开抽屉
   </button>
 </template>
 

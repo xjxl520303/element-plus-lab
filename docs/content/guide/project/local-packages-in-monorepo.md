@@ -122,7 +122,7 @@ resolve: {
    - playground、docs 内的示例都可以使用 npm 风格的导入：
 
      ```ts
-     import { useDialog, type EllDialogResult } from 'element-plus-lab'
+     import { useDialog, type EllOverlayResult } from 'element-plus-lab'
      ```
 
      开发体验和真实用户在项目中使用该包的方式一致。

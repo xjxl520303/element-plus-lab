@@ -1,7 +1,7 @@
 {
   "name": "element-plus-lab",
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A business component library based on Element Plus",
   "author": "xjxl520303 <xjxl520303@gmail.com",
   "license": "MIT",
@@ -55,6 +55,7 @@
       "import": "./dist/index.full.cjs",
       "require": "./dist/index.full.cjs"
     },
+    "./drawer-close-placement.css": "./dist/drawer-close-placement.css",
     "./package.json": "./package.json"
   },
   "main": "dist/lib/index.cjs",

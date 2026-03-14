@@ -1,5 +1,5 @@
 <script lang="tsx" setup>
-import type { EllDialogResult } from 'element-plus-lab'
+import type { EllOverlayResult } from 'element-plus-lab'
 
 import { ElMessage } from 'element-plus'
 import { useDialog } from 'element-plus-lab'
@@ -55,7 +55,7 @@ async function open2() {
           })
         }
         catch (error) {
-          const result = error as unknown as EllDialogResult
+          const result = error as unknown as EllOverlayResult
           if (result.reason === 'ok') {
             resolve({ reason: 'ok' })
           }

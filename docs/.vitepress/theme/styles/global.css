@@ -6,3 +6,12 @@
 @source "../../../examples/**/*.{vue,ts,js}";
 /* vitepress theme files */
 @source "../**/*.{vue,ts,js}";
+
+/* useDrawer：关闭按钮在左侧时，通过 flex order 控制 el-drawer 自带关闭按钮位置 */
+.el-drawer.ell-drawer-close-left .el-drawer__header {
+  display: flex;
+  flex-direction: row;
+}
+.el-drawer.ell-drawer-close-left .el-drawer__close-btn {
+  order: -1;
+}

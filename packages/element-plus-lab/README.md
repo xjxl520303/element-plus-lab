@@ -33,7 +33,7 @@ At the moment this package only provides one component, **`useDialog`**. More co
 **2. Use it where you need to open a dialog:**
 
 ```ts
-import { useDialog, type EllDialogResult } from 'element-plus-lab'
+import { useDialog, type EllOverlayResult } from 'element-plus-lab'
 
 const { openDialog } = useDialog()
 
@@ -43,8 +43,8 @@ async function open() {
     await openDialog({ title: 'Confirm', content: 'Are you sure you want to delete?' })
     // User clicked OK
   } catch (error: unknown) {
-    // User cancelled or closed; error.reason is 'cancel' | 'close'
-    const result = error as EllDialogResult
+    // User cancelled or closed; error.reason is 'cancel' | 'close' | 'ok'
+    const result = error as EllOverlayResult
     console.log('Dialog closed reason:', result.reason)
   }
 }

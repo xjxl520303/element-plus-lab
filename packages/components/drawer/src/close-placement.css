@@ -1,0 +1,13 @@
+/**
+ * useDrawer 关闭按钮位置样式
+ * 当 headerConfig.closePlacement === 'left' 时，抽屉会添加类名 ell-drawer-close-left，
+ * 引入此样式后，ElDrawer 自带的关闭按钮会显示在头部左侧。
+ * 若项目已通过其他方式提供相同规则，可不必重复引入。
+ */
+.el-drawer.ell-drawer-close-left .el-drawer__header {
+  display: flex;
+  flex-direction: row;
+}
+.el-drawer.ell-drawer-close-left .el-drawer__close-btn {
+  order: -1;
+}

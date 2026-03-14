@@ -136,14 +136,15 @@ const vitePressOptions: UserConfig = {
         '@nolebase/ui',
       ],
     },
-    ssr: {
-      // 这些包在 SSR 构建阶段需要让 Vite 处理（否则 Node 会直接尝试加载 .vue / .css）
-      noExternal: [
-        '@nolebase/vitepress-plugin-enhanced-readabilities',
-        '@nolebase/ui',
-        'element-plus',
-      ],
-    },
+ssr: {
+  // 这些包在 SSR 构建阶段需要让 Vite 处理（否则 Node 会直接尝试加载 .vue / .css）
+  noExternal: [
+    '@nolebase/vitepress-plugin-enhanced-readabilities',
+    '@nolebase/ui',
+    'element-plus',
+    'element-plus-lab',
+  ],
+},
   },
 }
 
