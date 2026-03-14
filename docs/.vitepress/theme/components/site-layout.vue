@@ -20,5 +20,6 @@ const { Layout } = DefaultTheme
     </template>
   </Layout>
   <portal-target name="ell-dialog" multiple />
+  <portal-target name="ell-drawer" multiple />
   <DemoHighlightTrigger />
 </template>

@@ -38,7 +38,7 @@ pnpm add element-plus-lab
 2. 在需要使用对话框的地方引入 `useDialog` 钩子函数，并调用 `openDialog()` 方法打开对话框。
 
 ```ts
-import { useDialog, type EllDialogResult } from 'element-plus-lab'
+import { useDialog, type EllOverlayResult } from 'element-plus-lab'
 
 const { openDialog } = useDialog()
 
@@ -47,8 +47,8 @@ const someTrigger = async () => {
     const result = await openDialog()
     console.log('对话框结果：', result)
   } catch (error: unknown) {
-    // 在 catch 中先用 unknown 接住，再断言为 EllDialogResult
-    const result = error as EllDialogResult
+    // 在 catch 中先用 unknown 接住，再断言为 EllOverlayResult
+    const result = error as EllOverlayResult
     console.log('对话框关闭原因：', result.reason)
   }
 }

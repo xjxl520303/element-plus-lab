@@ -1,6 +1,6 @@
 import type { TemplatePromiseProps } from '@vueuse/core';
 
-import type { EllDialogProps, EllDialogResult } from './types';
+import type { EllDialogProps } from './types';
 
 import { ref } from 'vue';
 
@@ -8,23 +8,7 @@ import { createTemplatePromise } from '@vueuse/core';
 import { ElButton, ElDialog } from 'element-plus';
 import { PortalTarget, Wormhole } from 'portal-vue';
 import { ulid } from 'ulid';
-
-type PromiseState = 'fulfilled' | 'pending' | 'rejected';
-
-/**
- * 获取 Promise 状态
- * @param p Promise 对象
- * @returns Promise 状态
- */
-async function getPromiseState(p: Promise<unknown>): Promise<PromiseState> {
-  return await Promise.race([
-    Promise.resolve(p).then(
-      (): PromiseState => 'fulfilled',
-      (): PromiseState => 'rejected',
-    ),
-    Promise.resolve().then((): PromiseState => 'pending'),
-  ]);
-}
+import { getPromiseState, type EllOverlayResult } from '@element-plus-lab/utils';
 
 /**
  * `ELDialog` 封装
@@ -41,21 +25,21 @@ export function useDialog(keepInstance = false, targetName = 'ell-dialog') {
     promise,
     resolve: instanceResolve,
     reject: instanceReject,
-  } = Promise.withResolvers<EllDialogResult | undefined>();
+  } = Promise.withResolvers<EllOverlayResult | undefined>();
 
   const sender = ulid();
   const InnerDialog = createTemplatePromise<
-    EllDialogResult,
+    EllOverlayResult,
     [EllDialogProps?]
   >();
 
   // 包装 resolve 和 reject，确保关闭 portal
   const createCloseHandler = (
-    originalResolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
+    originalResolve: (v: EllOverlayResult | Promise<EllOverlayResult>) => void,
     originalReject: (value?: any) => void,
   ) => {
     const wrappedResolve = (
-      value: EllDialogResult | Promise<EllDialogResult>,
+      value: EllOverlayResult | Promise<EllOverlayResult>,
     ) => {
       if (!keepInstance) {
         Wormhole.close({
@@ -96,7 +80,7 @@ export function useDialog(keepInstance = false, targetName = 'ell-dialog') {
   // 创建 beforeClose 处理器
   const createBeforeCloseHandler = (
     beforeClose: EllDialogProps['beforeClose'],
-    wrappedResolve: (value: EllDialogResult | Promise<EllDialogResult>) => void,
+    wrappedResolve: (value: EllOverlayResult | Promise<EllOverlayResult>) => void,
     wrappedReject: (value?: any) => void,
     done: () => void,
   ) => {
@@ -108,7 +92,7 @@ export function useDialog(keepInstance = false, targetName = 'ell-dialog') {
 
           // 包装 resolve 和 reject，设置标志
           const beforeCloseResolve = (
-            value: EllDialogResult | Promise<EllDialogResult>,
+            value: EllOverlayResult | Promise<EllOverlayResult>,
           ) => {
             isManuallyClosed = true;
             wrappedResolve(value);
@@ -142,7 +126,7 @@ export function useDialog(keepInstance = false, targetName = 'ell-dialog') {
   // 插槽公共逻辑
   const setSlotCommonLogic = (
     props: EllDialogProps | undefined,
-    resolve: (value: EllDialogResult | Promise<EllDialogResult>) => void,
+    resolve: (value: EllOverlayResult | Promise<EllOverlayResult>) => void,
     reject: (value?: any) => void,
   ) => {
     // 动态检查 portal 内容
@@ -248,11 +232,11 @@ export function useDialog(keepInstance = false, targetName = 'ell-dialog') {
 
   const EllDialog = () => {
     if (keepInstance) {
-      const resolve = (value: EllDialogResult | Promise<EllDialogResult>) => {
+      const resolve = (value: EllOverlayResult | Promise<EllOverlayResult>) => {
         visible.value = false;
         instanceResolve(value);
         // 重置 promise 为 pending 状态，以便下次打开时使用
-        const newPromise = Promise.withResolvers<EllDialogResult | undefined>();
+        const newPromise = Promise.withResolvers<EllOverlayResult | undefined>();
         promise = newPromise.promise;
         instanceResolve = newPromise.resolve;
         instanceReject = newPromise.reject;
@@ -261,7 +245,7 @@ export function useDialog(keepInstance = false, targetName = 'ell-dialog') {
         visible.value = false;
         instanceReject(value);
         // 重置 promise 为 pending 状态，以便下次打开时使用
-        const newPromise = Promise.withResolvers<EllDialogResult | undefined>();
+        const newPromise = Promise.withResolvers<EllOverlayResult | undefined>();
         promise = newPromise.promise;
         instanceResolve = newPromise.resolve;
         instanceReject = newPromise.reject;
@@ -298,7 +282,7 @@ export function useDialog(keepInstance = false, targetName = 'ell-dialog') {
           {{
             default: (
               slotProps: TemplatePromiseProps<
-                EllDialogResult,
+                EllOverlayResult,
                 [EllDialogProps]
               >,
             ) => {

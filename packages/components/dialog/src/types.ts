@@ -2,17 +2,7 @@ import type { DialogProps } from 'element-plus';
 import type { JSX } from 'vue/jsx-runtime';
 
 import type { VNodeChild } from 'vue';
-
-/**
- * 对话框关闭原因
- *
- * @description 对话框关闭原因可用于判断是否正常关闭和取消关闭
- *
- * - `cancel`：取消关闭
- * - `close`：点击关闭按钮关闭
- * - `ok`：确认关闭
- */
-export type EllDialogCloseReason = 'cancel' | 'close' | 'ok';
+import type { EllOverlayResult } from '@element-plus-lab/utils';
 
 export interface EllDialogProps {
   /**
@@ -77,7 +67,7 @@ export interface EllDialogProps {
    * @returns 对话框头部内容
    */
   renderHeader?: (
-    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
+    resolve: (v: EllOverlayResult | Promise<EllOverlayResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -92,7 +82,7 @@ export interface EllDialogProps {
    * @returns 对话框主体内容
    */
   render?: (
-    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
+    resolve: (v: EllOverlayResult | Promise<EllOverlayResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -107,7 +97,7 @@ export interface EllDialogProps {
    * @returns 对话框底部内容
    */
   renderFooter?: (
-    resolve: (v: EllDialogResult | Promise<EllDialogResult>) => void,
+    resolve: (v: EllOverlayResult | Promise<EllOverlayResult>) => void,
     reject: (value?: any) => void,
   ) => JSX.Element | string | VNodeChild;
 
@@ -119,8 +109,8 @@ export interface EllDialogProps {
    * @returns 返回 `false` 阻止关闭，返回 `true`、`undefined` 或 `Promise<void>` 允许关闭。也可以通过 `resolve`/`reject` 手动控制关闭
    */
   beforeClose?: (
-    resolve: (v: EllDialogResult) => void,
-    reject: (v: EllDialogResult) => void,
+    resolve: (v: EllOverlayResult) => void,
+    reject: (v: EllOverlayResult) => void,
   ) => boolean | Promise<boolean | undefined> | Promise<void> | undefined;
 
   /**
@@ -130,8 +120,8 @@ export interface EllDialogProps {
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    */
   okHandler?: (
-    resolve: (v: EllDialogResult) => void,
-    reject: (v: EllDialogResult) => void,
+    resolve: (v: EllOverlayResult) => void,
+    reject: (v: EllOverlayResult) => void,
   ) => Promise<void> | void;
 
   /**
@@ -141,27 +131,7 @@ export interface EllDialogProps {
    * @param reject 取消关闭对话框方法（`reject({ reason: 'cancel', data: '...'})`）
    */
   cancelHandler?: (
-    resolve: (v: EllDialogResult) => void,
-    reject: (v: EllDialogResult) => void,
+    resolve: (v: EllOverlayResult) => void,
+    reject: (v: EllOverlayResult) => void,
   ) => Promise<void> | void;
-}
-
-/**
- * 对话框关闭原因及传递的参数
- *
- * @description 对话框关闭原因及传递的参数，用于在对话框关闭时传递参数
- *
- * - `data`：对话框关闭时传递的参数
- * - `reason`：关闭原因
- */
-export interface EllDialogResult {
-  /**
-   * 对话框关闭时传递的参数
-   */
-  data?: any;
-
-  /**
-   * 关闭原因
-   */
-  reason: EllDialogCloseReason;
 }

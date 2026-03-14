@@ -55,6 +55,7 @@
       "import": "./dist/index.full.cjs",
       "require": "./dist/index.full.cjs"
     },
+    "./drawer-close-placement.css": "./dist/drawer-close-placement.css",
     "./package.json": "./package.json"
   },
   "main": "dist/lib/index.cjs",

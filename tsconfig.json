@@ -4,6 +4,7 @@
     "baseUrl": ".",
     "paths": {
       "@element-plus-lab/components": ["packages/components"],
+      "@element-plus-lab/utils": ["packages/utils"],
       "element-plus-lab": ["packages/element-plus-lab/index.ts"]
     }
   },
