@@ -5,7 +5,7 @@ order: 1
 
 # 快速开始
 
-当前组件库提供了常见的业务组件封装，并以常规组件、指令和钩子函数的方式提供，部分组件因为结合了 `portal-vue` 的特性，只需要引入对应的钩子函数，不需要进行注册使用，但还是需要在项目中手动指定 `portal-vue` 的传送目标名称。
+当前组件库提供两类能力：**Vue 组件**（如 `ElFormGroup`、`ElSimplePageHeader`、`ElSimpleSteps`）与 **钩子函数**（如 `useDialog`、`useDrawer`）。Vue 组件需通过 `app.use()` 全局注册或按需注册；钩子无需注册，在需要处引入即可，但使用 `useDialog` / `useDrawer` 时需在根组件中放置对应的 `portal-vue` 传送目标。
 
 ## 安装
 
@@ -25,13 +25,42 @@ pnpm add element-plus-lab
 
 ## 使用
 
-截止目前项目只发布了一个 `useDialog` 的钩子函数，用于封装 `<el-dialog>` 组件，所以这里以 `useDialog` 为例进行介绍。
+### 注册 Vue 组件
 
-1. 在项目的共享入口组件（通常是 `App.vue` 中）添加 `portal-vue` 的传送目标名称 `ell-dialog`。
+所有以 `.vue` 形式提供的组件（如 `ElFormGroup`、`ElSimplePageHeader`、`ElSimpleSteps`）支持两种注册方式：
+
+**方式一：一次性全局安装**
+
+```ts
+import { createApp } from 'vue'
+import ElementPlusLab from 'element-plus-lab'
+
+const app = createApp(App)
+app.use(ElementPlusLab)  // 注册 ElFormGroup、ElSimplePageHeader、ElSimpleSteps
+```
+
+**方式二：按需单独安装**
+
+```ts
+import { createApp } from 'vue'
+import { ElFormGroup } from 'element-plus-lab'
+
+const app = createApp(App)
+app.use(ElFormGroup)  // 仅注册 ElFormGroup
+```
+
+钩子函数（如 `useDialog`、`useDrawer`）无需注册，在需要处直接引入使用即可。
+
+### 使用 useDialog
+
+截止目前项目发布了 `useDialog`、`useDrawer` 等钩子函数，以及 `ElFormGroup`、`ElSimplePageHeader`、`ElSimpleSteps` 等组件。这里以 `useDialog` 为例介绍钩子用法。
+
+1. 在项目的共享入口组件（通常是 `App.vue`）中添加 `portal-vue` 的传送目标。使用 `useDialog` 需要 `ell-dialog`，使用 `useDrawer` 需要 `ell-drawer`。
 
 ```vue
 <template>
-  <portal-target name="ell-dialog" />
+  <portal-target name="ell-dialog" multiple />
+  <portal-target name="ell-drawer" multiple />
 </template>
 ```
 
