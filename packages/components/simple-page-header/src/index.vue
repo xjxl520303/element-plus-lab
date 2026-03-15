@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import type { VNodeChild } from 'vue'
 import type { EllSimplePageHeaderProps } from './types'
-import { computed, ref, useSlots } from 'vue'
 import { ArrowLeft } from '@element-plus/icons-vue'
 import { Portal, PortalTarget } from 'portal-vue'
 import { ulid } from 'ulid'
+import { computed, ref, useSlots } from 'vue'
 
 defineOptions({
   name: 'ElSimplePageHeader',

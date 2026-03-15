@@ -31,13 +31,15 @@ async function toggle() {
 
   if (nextFolded) {
     const allow = props.beforeCollapse ? await resolveAllow(props.beforeCollapse()) : true
-    if (!allow) return
+    if (!allow)
+      return
     isFold.value = true
     props.afterCollapse?.()
   }
   else {
     const allow = props.beforeExpand ? await resolveAllow(props.beforeExpand()) : true
-    if (!allow) return
+    if (!allow)
+      return
     isFold.value = false
     props.afterExpand?.()
   }
@@ -136,8 +138,8 @@ const contentId = `ell-form-group-${Math.random().toString(36).slice(2, 9)}`
         </div>
       </button>
       <div
-        class="shrink-0 font-bold text-[var(--el-text-color-primary)]"
         :id="`${contentId}-label`"
+        class="shrink-0 font-bold text-[var(--el-text-color-primary)]"
       >
         {{ title }}
       </div>

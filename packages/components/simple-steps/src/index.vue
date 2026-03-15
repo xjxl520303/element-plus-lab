@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { EllSimpleStepsProps } from './types'
-import { computed } from 'vue'
 import { Select } from '@element-plus/icons-vue'
 
 defineOptions({
@@ -62,7 +61,9 @@ defineExpose<{
               <Select />
             </el-icon>
           </template>
-          <template v-else>{{ index + 1 }}</template>
+          <template v-else>
+            {{ index + 1 }}
+          </template>
         </div>
         <div
           class="ml-3 min-w-max text-[16px] font-bold text-[var(--el-text-color-primary)]"
