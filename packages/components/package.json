@@ -9,6 +9,7 @@
   "main": "index.ts",
   "types": "index.d.ts",
   "peerDependencies": {
+    "@element-plus/icons-vue": "catalog:vue",
     "@vueuse/core": "catalog:vue",
     "element-plus": "catalog:vue",
     "portal-vue": "catalog:vue",

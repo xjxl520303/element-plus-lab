@@ -6,6 +6,8 @@
 @source "../../../examples/**/*.{vue,ts,js}";
 /* vitepress theme files */
 @source "../**/*.{vue,ts,js}";
+/* 组件库源码（文档通过 alias 加载，需参与扫描否则 Tailwind 不生成对应工具类） */
+@source "../../../../packages/components/**/*.{vue,ts,tsx,js,jsx}";
 
 /* useDrawer：关闭按钮在左侧时，通过 flex order 控制 el-drawer 自带关闭按钮位置 */
 .el-drawer.ell-drawer-close-left .el-drawer__header {

@@ -1,4 +1,5 @@
 import { defineConfig } from 'tsdown'
+import vue from '@vitejs/plugin-vue'
 import VueJsx from 'unplugin-vue-jsx/rolldown'
 
 const pkg = 'packages/element-plus-lab'
@@ -10,7 +11,7 @@ const pkg = 'packages/element-plus-lab'
  * pnpm pack -C packages/element-plus-lab && npx publint <生成的 tgz>
  */
 const shared = {
-  plugins: [VueJsx()],
+  plugins: [vue(), VueJsx()],
   checks: { pluginTimings: false as const },
   publint: false,
   deps: {
