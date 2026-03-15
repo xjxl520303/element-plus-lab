@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
 import { ElFormGroup } from 'element-plus-lab'
+import { reactive } from 'vue'
 
 const form = reactive({
   name: '',

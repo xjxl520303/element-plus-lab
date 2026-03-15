@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { ElLoading } from 'element-plus'
 import { ElSimplePageHeader } from 'element-plus-lab'
+import { ref } from 'vue'
 
 const loadingInstance = ref<{ close: () => void } | undefined>()
 
@@ -24,8 +24,12 @@ function closeLoading() {
     :after-change="closeLoading"
   >
     <template #extra>
-      <el-button type="default" size="small">保存</el-button>
-      <el-button type="primary" size="small">提交</el-button>
+      <el-button type="default" size="small">
+        保存
+      </el-button>
+      <el-button type="primary" size="small">
+        提交
+      </el-button>
     </template>
   </ElSimplePageHeader>
 </template>

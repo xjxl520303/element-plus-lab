@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
 import { ElSimpleSteps } from 'element-plus-lab'
+import { ref } from 'vue'
 
 const step = ref(1)
 const stepsRef = ref<InstanceType<typeof ElSimpleSteps>>()
@@ -31,21 +31,29 @@ function nextStep2(current: number) {
 
 <template>
   <h5>控制 step 来完成步骤跳转：</h5>
-  <hr />
+  <hr>
   <ElSimpleSteps v-model="step" :options="stepOptions" />
-  <hr />
+  <hr>
   <el-button-group>
-    <el-button @click="preStep">上一步</el-button>
-    <el-button @click="nextStep">下一步</el-button>
+    <el-button @click="preStep">
+      上一步
+    </el-button>
+    <el-button @click="nextStep">
+      下一步
+    </el-button>
   </el-button-group>
-  <br />
-  <br />
+  <br>
+  <br>
   <h5>使用组件 ref 的 setStep 完成步骤跳转：</h5>
-  <hr />
+  <hr>
   <ElSimpleSteps ref="stepsRef" v-model="step" :options="stepOptions" />
-  <hr />
+  <hr>
   <el-button-group>
-    <el-button @click="() => preStep2(step)">上一步</el-button>
-    <el-button @click="() => nextStep2(step)">下一步</el-button>
+    <el-button @click="() => preStep2(step)">
+      上一步
+    </el-button>
+    <el-button @click="() => nextStep2(step)">
+      下一步
+    </el-button>
   </el-button-group>
 </template>

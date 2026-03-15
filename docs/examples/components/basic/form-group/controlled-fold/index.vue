@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
 import { ElFormGroup } from 'element-plus-lab'
+import { reactive, ref } from 'vue'
 
 const form = reactive({
   name: '',
@@ -26,10 +26,14 @@ function collapseAll() {
 
 <template>
   <div class="flex flex-wrap gap-2">
-    <el-button size="small" @click="expandAll">全部展开</el-button>
-    <el-button size="small" @click="collapseAll">全部折叠</el-button>
+    <el-button size="small" @click="expandAll">
+      全部展开
+    </el-button>
+    <el-button size="small" @click="collapseAll">
+      全部折叠
+    </el-button>
   </div>
-  <br />
+  <br>
 
   <ElFormGroup
     v-model:folded="group1Folded"

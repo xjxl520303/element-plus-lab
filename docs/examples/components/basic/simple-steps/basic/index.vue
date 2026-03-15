@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { ElSimpleSteps } from 'element-plus-lab'
+import { ref } from 'vue'
 
 const step1 = ref(1)
 const step2 = ref(4)
@@ -22,23 +22,23 @@ const step2Options = [
 
 <template>
   <h5>第一步：</h5>
-  <hr />
+  <hr>
   <ElSimpleSteps v-model="step1" :options="step1Options" />
-  <hr />
+  <hr>
   <h5>第三步：</h5>
-  <hr />
+  <hr>
   <ElSimpleSteps v-model="step2" :options="step1Options" />
-  <hr />
+  <hr>
   <h5>二个步骤：</h5>
-  <hr />
+  <hr>
   <ElSimpleSteps v-model="step3" :options="step2Options" />
-  <hr />
+  <hr>
   <h5>二个步骤并设置最小间距：</h5>
-  <hr />
+  <hr>
   <ElSimpleSteps v-model="step4" :space="100" :options="step2Options" />
-  <hr />
+  <hr>
   <h5>设定百分百宽度：</h5>
-  <hr />
+  <hr>
   <ElSimpleSteps
     v-model="step4"
     style="width: 100%"

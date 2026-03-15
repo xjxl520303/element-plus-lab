@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { reactive } from 'vue'
 import { ElFormGroup } from 'element-plus-lab'
+import { reactive } from 'vue'
 
 const form = reactive({
   name: '',
@@ -48,7 +48,9 @@ const form = reactive({
       </div>
     </template>
     <template #extra>
-      <el-button type="primary" size="small" text>编辑</el-button>
+      <el-button type="primary" size="small" text>
+        编辑
+      </el-button>
     </template>
     <el-form :model="form" label-width="100px">
       <el-form-item label="地址">

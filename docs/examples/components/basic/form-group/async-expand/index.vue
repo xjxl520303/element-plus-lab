@@ -1,13 +1,14 @@
 <script lang="ts" setup>
-import { ref } from 'vue'
 import { ElFormGroup } from 'element-plus-lab'
+import { ref } from 'vue'
 
 const loading = ref(false)
 const loaded = ref(false)
 const items = ref<string[]>([])
 
 async function onAfterExpand() {
-  if (loaded.value) return
+  if (loaded.value)
+    return
   loading.value = true
   try {
     await new Promise(resolve => setTimeout(resolve, 1200))
@@ -39,7 +40,9 @@ async function onAfterExpand() {
       <span>加载中...</span>
     </div>
     <ul v-else-if="items.length" class="list-inside list-disc text-sm text-[var(--el-text-color-regular)]">
-      <li v-for="(item, i) in items" :key="i">{{ item }}</li>
+      <li v-for="(item, i) in items" :key="i">
+        {{ item }}
+      </li>
     </ul>
     <p v-else class="py-2 text-sm text-[var(--el-text-color-secondary)]">
       点击展开后将通过 afterExpand 异步加载内容
