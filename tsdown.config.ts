@@ -15,7 +15,18 @@ const shared = {
   checks: { pluginTimings: false as const },
   publint: false,
   deps: {
-    skipNodeModulesBundle: true,
+    alwaysBundle: [
+      '@element-plus-lab/utils',
+      '@element-plus-lab/components',
+    ],
+    neverBundle: [
+      'vue',
+      'portal-vue',
+      'ulid',
+      'element-plus',
+      '@element-plus/icons-vue',
+      '@vueuse/core',
+    ],
   },
 }
 

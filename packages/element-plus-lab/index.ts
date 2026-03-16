@@ -1,9 +1,9 @@
 import type { App } from 'vue'
-import { useDialog } from '../components/dialog'
-import { useDrawer } from '../components/drawer'
-import ElFormGroupSfc from '../components/form-group/src/index.vue'
-import ElSimplePageHeaderSfc from '../components/simple-page-header/src/index.vue'
-import ElSimpleStepsSfc from '../components/simple-steps/src/index.vue'
+import { useDialog } from '@element-plus-lab/components/dialog'
+import { useDrawer } from '@element-plus-lab/components/drawer'
+import ElFormGroupSfc from '@element-plus-lab/components/form-group/src/index.vue'
+import ElSimplePageHeaderSfc from '@element-plus-lab/components/simple-page-header/src/index.vue'
+import ElSimpleStepsSfc from '@element-plus-lab/components/simple-steps/src/index.vue'
 
 function withInstall<T extends { name?: string }>(
   comp: T,

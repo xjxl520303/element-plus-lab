@@ -15,5 +15,8 @@
     "portal-vue": "catalog:vue",
     "ulid": "catalog:vue",
     "vue": "catalog:vue"
+  },
+  "dependencies": {
+    "@element-plus-lab/utils": "workspace:*"
   }
 }
