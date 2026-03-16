@@ -39,6 +39,23 @@ async function openTestDrawer() {
 
 <template>
   <div>
+    <!-- Page Header：通过 app.use(ElementPlusLab) 全局注册，此处直接使用无需 import -->
+    <section class="mb-6 rounded border border-gray-200 p-4">
+      <h2 class="mb-2 text-lg font-semibold">
+        ElSimplePageHeader（app.use 验证）
+      </h2>
+      <ElSimplePageHeader title="Playground 示例页" back-text="返回">
+        <template #extra>
+          <el-button type="default" size="small">
+            保存
+          </el-button>
+          <el-button type="primary" size="small">
+            提交
+          </el-button>
+        </template>
+      </ElSimplePageHeader>
+    </section>
+
     <a href="https://vite.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo">
     </a>

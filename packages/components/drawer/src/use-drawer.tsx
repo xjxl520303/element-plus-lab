@@ -29,6 +29,32 @@ export function useDrawer(keepInstance = false, targetName = 'ell-drawer') {
     reject: instanceReject,
   } = Promise.withResolvers<EllOverlayResult | undefined>()
 
+  // 包装 resolve 和 reject，确保关闭 portal（与 useDialog 一致，避免 keepInstance=false 时 portal 未清理）
+  const createCloseHandler = (
+    originalResolve: (v: EllOverlayResult | Promise<EllOverlayResult>) => void,
+    originalReject: (value?: any) => void,
+  ) => {
+    const wrappedResolve = (value: EllOverlayResult | Promise<EllOverlayResult>) => {
+      if (!keepInstance) {
+        Wormhole.close({
+          to: targetName,
+          from: sender,
+        })
+      }
+      originalResolve(value)
+    }
+    const wrappedReject = (value?: any) => {
+      if (!keepInstance) {
+        Wormhole.close({
+          to: targetName,
+          from: sender,
+        })
+      }
+      originalReject(value)
+    }
+    return { wrappedResolve, wrappedReject }
+  }
+
   const setCommonProps = (props: EllDrawerProps | undefined): any => {
     // 未传入任何配置时，仅展示一个可点击遮罩关闭的空抽屉（等价于 variant: 'blank'）
     if (!props) {
@@ -331,10 +357,11 @@ export function useDrawer(keepInstance = false, targetName = 'ell-drawer') {
           ) => {
             const { resolve, reject, args } = slotProps
             const props = args[0]
+            const { wrappedResolve, wrappedReject } = createCloseHandler(resolve, reject)
 
             const commonProps = setCommonProps(props) as any
             const beforeCloseHandler = (done: () => void) => {
-              createBeforeCloseHandler(props, resolve, reject)(done)
+              createBeforeCloseHandler(props, wrappedResolve, wrappedReject)(done)
             }
 
             return (
@@ -343,7 +370,7 @@ export function useDrawer(keepInstance = false, targetName = 'ell-drawer') {
                 {...commonProps}
                 beforeClose={beforeCloseHandler}
               >
-                {setSlotCommonLogic(props, resolve, reject)}
+                {setSlotCommonLogic(props, wrappedResolve, wrappedReject)}
               </ElDrawer>
             )
           },

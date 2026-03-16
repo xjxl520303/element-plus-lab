@@ -11,7 +11,7 @@ const { openDialog: openWithDestroy, contentPortalName: contentPortalName1 }
 
 // 保持实例：ElDialog 组件不会被销毁，只是隐藏，再次打开时复用同一个实例
 const { openDialog: openWithKeep, contentPortalName: contentPortalName2 }
-  = useDialog(true, 'bus-dialog-keep')
+  = useDialog(true, 'ell-dialog-keep')
 
 // 打开会销毁实例的对话框
 async function handleOpenWithDestroy() {
@@ -62,7 +62,7 @@ async function handleOpenWithKeep() {
     </ElButton>
   </div>
 
-  <portal-target name="bus-dialog-keep" multiple />
+  <portal-target name="ell-dialog-keep" multiple />
 
   <!-- 销毁实例的对话框内容 -->
   <portal :to="contentPortalName1" name="content">

@@ -14,12 +14,12 @@
 在 Element Plus 提供的组件基础上进行二次封装并作为后续业务组件的基础组件。
 
 - [x] `useDialog` 对话框封装 <sup>0.1.0</sup>
-- [x] `useDrawer` 抽屉封装 <sup>0.1.0+</sup>
+- [x] `useDrawer` 抽屉封装 <sup>0.2.0</sup>
 - [ ] `useFormDialog` 表单对话框封装
 - [ ] `useRequestMask` 请求遮罩封装
-- [ ] `<el-simple-steps>` 轻量级步骤条
-- [ ] `<el-simple-page-header>` 轻量级页面头部
-- [ ] `<el-form-group>` 表单分组
+- [x] `<el-simple-steps>` 轻量级步骤条 <sup>0.3.0</sup>
+- [x] `<el-simple-page-header>` 轻量级页面头部 <sup>0.3.0</sup>
+- [x] `<el-form-group>` 表单分组 <sup>0.3.0</sup>
 - [ ] `<el-department-picker>` 部门和人员选择器
 - [ ] `<el-pro-table>` 表格增强组件
 - [ ] `<el-form-layout>` 表单布局组件

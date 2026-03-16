@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "catalog:vue",
     "element-plus": "catalog:vue",
     "element-plus-lab": "workspace:*",
     "portal-vue": "catalog:vue",

@@ -1,53 +1,87 @@
 # Element Plus Lab
 
-A business component library based on Element Plus.
+A business component library based on Element Plus. Provides Promise-style dialog/drawer hooks and Vue components such as form group, steps, and page header.
 
-## Quick Start
-
-Install the package:
+## Installation
 
 ```bash
 pnpm add element-plus-lab
 ```
 
-Before using the package, you need to install the following dependencies:
+Install and register these peer dependencies in your project:
 
 ```bash
-pnpm add portal-vue @vueuse/core
+pnpm add vue element-plus portal-vue @vueuse/core
 ```
 
-Some other dependencies may be required depending on the components you use, but they only need when you use the corresponding components.
+Some components use `@element-plus/icons-vue`; install it when you need those components.
 
 ## Usage
 
-At the moment this package only provides one component, **`useDialog`**. More components will be added later. Below is a brief example of how to use `useDialog` (a Promise-based wrapper around `<el-dialog>`).
+### Registering Vue components
 
-**1. Add a portal target in your root component (e.g. `App.vue`):**
+All `.vue` components (`ElFormGroup`, `ElSimplePageHeader`, `ElSimpleSteps`) can be registered in two ways:
+
+**Option 1: Register all at once**
+
+```ts
+import { createApp } from 'vue'
+import ElementPlusLab from 'element-plus-lab'
+
+const app = createApp(App)
+app.use(ElementPlusLab)
+```
+
+**Option 2: Register individually**
+
+```ts
+import { createApp } from 'vue'
+import { ElFormGroup } from 'element-plus-lab'
+
+const app = createApp(App)
+app.use(ElFormGroup)
+```
+
+Hooks (`useDialog`, `useDrawer`) do not need registration; import and use them where needed.
+
+### Using useDialog / useDrawer
+
+Before using `useDialog` or `useDrawer`, add the corresponding portal targets in your root component (e.g. `App.vue`):
 
 ```vue
 <template>
-  <portal-target name="ell-dialog" />
+  <portal-target name="ell-dialog" multiple />
+  <portal-target name="ell-drawer" multiple />
 </template>
 ```
 
-**2. Use it where you need to open a dialog:**
+Then import and call the hook in your code:
 
 ```ts
 import { useDialog, type EllOverlayResult } from 'element-plus-lab'
 
 const { openDialog } = useDialog()
 
-// async/await
 async function open() {
   try {
-    await openDialog({ title: 'Confirm', content: 'Are you sure you want to delete?' })
+    await openDialog({ title: 'Confirm', content: 'Are you sure?' })
     // User clicked OK
   } catch (error: unknown) {
-    // User cancelled or closed; error.reason is 'cancel' | 'close' | 'ok'
     const result = error as EllOverlayResult
-    console.log('Dialog closed reason:', result.reason)
+    console.log('Close reason:', result.reason) // 'cancel' | 'close' | 'ok'
   }
 }
 ```
 
-For more options (custom header/content/footer, `beforeClose`, keep instance, etc.), see the project documentation.
+For more options (custom header/content/footer, `beforeClose`, keep instance, etc.), see the [project documentation](https://github.com/xjxl520303/element-plus-lab).
+
+## Exports overview
+
+| Type       | Name                  | Description                                      |
+| ---------- | --------------------- | ------------------------------------------------ |
+| Hook       | `useDialog`           | Promise-style wrapper around `<el-dialog>`       |
+| Hook       | `useDrawer`           | Promise-style wrapper around `<el-drawer>`       |
+| Vue component | `ElFormGroup`      | Form group with collapsible section and hooks    |
+| Vue component | `ElSimplePageHeader` | Page header with tabs and back button        |
+| Vue component | `ElSimpleSteps`    | Steps component driven by `v-model`              |
+| Plugin     | `ElementPlusLab`      | Registers all Vue components above at once       |

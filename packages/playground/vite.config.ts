@@ -22,7 +22,12 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [
+        // 排除由 app.use(ElementPlusLab) 全局注册的组件，避免被解析为 element-plus 路径
+        ElementPlusResolver({
+          exclude: /^El(SimplePageHeader|FormGroup|SimpleSteps)$/,
+        }),
+      ],
     }),
     ElementPlus({
       useSource: true,

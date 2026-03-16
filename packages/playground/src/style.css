@@ -1,1 +1,5 @@
 @import "tailwindcss";
+
+/* 指定扫描路径，否则 @tailwindcss/vite 可能未包含当前应用与通过 alias 引入的组件源码 */
+@source "./**/*.{vue,ts,tsx,js,jsx}";
+@source "../../components/**/*.{vue,ts,tsx,js,jsx}";

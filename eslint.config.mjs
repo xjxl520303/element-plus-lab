@@ -19,6 +19,7 @@ export default antfu(
     files: [
       'docs/examples/**/*.vue',
       'packages/playground/**/*.vue',
+      'packages/components/**/*.vue',
     ],
     languageOptions: {
       parser: vueParser,
